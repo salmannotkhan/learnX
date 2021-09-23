@@ -3,15 +3,17 @@ import cors from "cors";
 import { createServer } from "http";
 import { Server } from "socket.io";
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 
 const PORT = process.env.PORT || 1234;
 const app = express();
 const server = createServer(app);
 const io = new Server(server);
+dotenv.config();
 app.use(cors());
 io.use(cors());
 
-app.get("/", (req, res) => {
+app.get("/", (_req, res) => {
     res.json({
         name: "Someone",
         title: "Video Playback",
@@ -19,9 +21,7 @@ app.get("/", (req, res) => {
             "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
     });
 });
-const password = "7ev8CFyBsjyTt4y5";
-const uri = `mongodb+srv://salmannotkhan:${password}@cluster0.feogg.mongodb.net/test_db?retryWrites=true&w=majority`;
-// salmannotkhan
+const uri = process.env.MONGO_URI;
 
 mongoose.connect(uri, () => {
     console.log("Database connected");
