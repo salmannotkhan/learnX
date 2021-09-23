@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { User } from "./User.js";
+import { User, userSchema } from "./User.js";
 
 const videoSchema = new mongoose.Schema({
     category: {
@@ -30,11 +30,7 @@ const videoSchema = new mongoose.Schema({
         type: Boolean,
         default: false,
     },
-    uploadedBy: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-        required: true,
-    },
+    uploadedBy: userSchema,
     premium: {
         type: Boolean,
         default: false,
