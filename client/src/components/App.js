@@ -5,21 +5,21 @@ import Stream from "./Stream";
 import Play from "./Play";
 
 function App() {
-    return (
-        <Router>
-            <Switch>
-                <Route path="/play">
-                    <Play />
-                </Route>
-                <Route path="/stream">
-                    <Stream />
-                </Route>
-                <Route path="/">
-                    <Home />
-                </Route>
-            </Switch>
-        </Router>
-    );
+	return (
+		<Router>
+			<Switch>
+				<Route path="/play">
+					<Play />
+				</Route>
+				<Route path="/stream">
+					<Stream />
+				</Route>
+				<Route path="/">
+					<Home />
+				</Route>
+			</Switch>
+		</Router>
+	);
 }
 
 export default App;

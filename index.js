@@ -4,6 +4,8 @@ import { createServer } from "http";
 import { Server } from "socket.io";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import { Video } from "./models/Video";
+import { User } from "./models/User";
 
 const PORT = process.env.PORT || 1234;
 const app = express();
@@ -14,29 +16,29 @@ app.use(cors());
 io.use(cors());
 
 app.get("/", (_req, res) => {
-    res.json({
-        name: "Someone",
-        title: "Video Playback",
-        videoUrl:
-            "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-    });
+	res.json({
+		name: "Someone",
+		title: "Video Playback",
+		videoUrl:
+			"http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+	});
 });
 const uri = process.env.MONGO_URI;
 
 mongoose.connect(uri, () => {
-    console.log("Database connected");
+	console.log("Database connected");
 });
 
 io.on("connection", (socket) => {
-    console.log("User connected");
-    socket.on("stream", (data) => {
-        io.emit("play", data);
-    });
-    socket.on("disconnect", () => {
-        console.log("User disconnected");
-    });
+	console.log("User connected");
+	socket.on("stream", (data) => {
+		io.emit("play", data);
+	});
+	socket.on("disconnect", () => {
+		console.log("User disconnected");
+	});
 });
 
 server.listen(PORT, () => {
-    console.log(`Listening at http://localhost:${PORT}`);
+	console.log(`Listening at http://localhost:${PORT}`);
 });
