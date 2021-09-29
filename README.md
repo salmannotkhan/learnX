@@ -3,8 +3,8 @@
 ## Structure
 
 index.js: Server (Express)  
-/models: Database Schemas (Mongoose)  
-/client: Frontend (React)
+models: Database Schemas (Mongoose)  
+client: Frontend (React)
 
 ## How to run locally
 

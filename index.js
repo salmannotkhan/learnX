@@ -4,8 +4,8 @@ import { createServer } from "http";
 import { Server } from "socket.io";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import { Video } from "./models/Video";
-import { User } from "./models/User";
+import { Video } from "./models/Video.js";
+import { User } from "./models/User.js";
 
 const PORT = process.env.PORT || 1234;
 const app = express();

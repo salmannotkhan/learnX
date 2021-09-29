@@ -1,36 +1,67 @@
 import mongoose from "mongoose";
+const { Schema } = mongoose;
 
-export const userSchema = new mongoose.Schema({
-	email: {
-		type: String,
-		required: true,
+export const schemaOptions = {
+	timestamps: { createdAt: "createdAt", updatedAt: "updatedAt" },
+};
+
+const userSchema = new Schema(
+	{
+		email: {
+			type: String,
+			unique: true,
+			required: true,
+		},
+		password: {
+			type: [String],
+			select: false,
+			required: true,
+		},
+		name: {
+			salutation: {
+				type: String,
+				required: true,
+			},
+			firstName: {
+				type: String,
+				required: true,
+			},
+			lastName: {
+				type: String,
+				required: true,
+			},
+		},
+		subscription: {
+			subscriptionId: {
+				type: String,
+			},
+			plan: {
+				type: String,
+				enum: ["Gold", "Silver", "Bronze"],
+			},
+			startDate: {
+				type: Date,
+			},
+		},
+		phoneNumber: Number,
+		role: {
+			type: String,
+			enum: ["Trainer", "Trainee", "Admin"],
+			required: true,
+		},
+		approved: Boolean,
 	},
-	password: {
-		type: String,
-		required: true,
-	},
-	firstName: {
-		type: String,
-		required: true,
-	},
-	lastName: {
-		type: String,
-		required: true,
-	},
-	isMember: {
-		type: Boolean,
-		default: false,
-	},
-	subscriptionId: {
-		type: String,
-	},
-	phoneNumber: {
-		type: Number,
-	},
-	isTrainer: {
-		type: Boolean,
-		required: true,
-	},
+	schemaOptions
+);
+
+userSchema.virtual("fullName").get(function () {
+	return (
+		this.name.salutation +
+		" " +
+		this.name.firstName +
+		" " +
+		this.name.lastName
+	);
 });
 
 export const User = mongoose.model("user", userSchema);

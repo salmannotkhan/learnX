@@ -1,56 +1,69 @@
 import mongoose from "mongoose";
-import { User, userSchema } from "./User.js";
+import { schemaOptions } from "./User.js";
+const { Schema } = mongoose;
 
-const videoSchema = new mongoose.Schema({
-	title: {
-		type: String,
-		required: true,
+const reactionSchema = new Schema(
+	{
+		user: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "User",
+			required: true,
+		},
+		body: String,
 	},
-	category: {
-		type: String,
-		required: true,
+	schemaOptions
+);
+
+const videoSchema = new Schema(
+	{
+		title: {
+			type: String,
+			required: true,
+		},
+		category: {
+			type: String,
+			required: true,
+		},
+		tags: [String],
+		videoUrl: {
+			type: String,
+			required: true,
+		},
+		views: [reactionSchema],
+		likes: [reactionSchema],
+		dislikes: [reactionSchema],
+		comments: [reactionSchema],
+		audioLanguage: {
+			type: String,
+			required: true,
+		},
+		isLive: {
+			type: Boolean,
+			default: false,
+		},
+		uploadedBy: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "User",
+			required: true,
+		},
+		isPremium: {
+			type: Boolean,
+			default: false,
+		},
 	},
-	videoUrl: {
-		type: String,
-		required: true,
-	},
-	views: {
-		type: Number,
-		default: 0,
-	},
-	likes: {
-		type: Number,
-		default: 0,
-	},
-	dislikes: {
-		type: Number,
-		default: 0,
-	},
-	audioLanguage: {
-		type: String,
-		required: true,
-	},
-	isLive: {
-		type: Boolean,
-		default: false,
-	},
-	uploadedBy: userSchema,
-	premium: {
-		type: Boolean,
-		default: false,
-	},
+	schemaOptions
+);
+
+videoSchema.virtual("totalLikes").get(function () {
+	return this.likes.length;
+});
+
+videoSchema.virtual("totalDislikes").get(function () {
+	return this.dislikes.length;
+});
+
+videoSchema.virtual("totalViews").get(function () {
+	return this.views.length;
 });
 
 export const Video = mongoose.model("video", videoSchema);
-
-// *uploadedVideos*
-// videoId
-// category
-// videoUrl
-// views
-// likes
-// dislikes
-// audioLanguage
-// videoType(live/static)
-// _uploadedBy(user)_
-// premium(boolean)
