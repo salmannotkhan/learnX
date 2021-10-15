@@ -4,7 +4,8 @@
 
 index.js: Server (Express)  
 models: Database Schemas (Mongoose)  
-client: Frontend (React)
+client: Frontend (React)  
+routes: API routes
 
 ## How to run locally
 
@@ -16,4 +17,4 @@ npm run dev
 ```
 
 > Note:  
-> `npm run dev ` will start express and react on port 1234 and 3000 respectively
+> `npm run dev` will start express and react on port 1234 and 3000 respectively
