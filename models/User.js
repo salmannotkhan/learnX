@@ -51,7 +51,7 @@ const userSchema = new Schema(
 		},
 		approved: Boolean,
 	},
-	schemaOptions
+	schemaOptions,
 );
 
 userSchema.virtual("fullName").get(function () {
@@ -64,4 +64,5 @@ userSchema.virtual("fullName").get(function () {
 	);
 });
 
-export const User = mongoose.model("user", userSchema);
+const User = mongoose.model("user", userSchema);
+export default User;

@@ -11,7 +11,7 @@ const reactionSchema = new Schema(
 		},
 		body: String,
 	},
-	schemaOptions
+	schemaOptions,
 );
 
 const videoSchema = new Schema(
@@ -51,7 +51,7 @@ const videoSchema = new Schema(
 			default: false,
 		},
 	},
-	schemaOptions
+	schemaOptions,
 );
 
 videoSchema.virtual("totalLikes").get(function () {
@@ -66,4 +66,5 @@ videoSchema.virtual("totalViews").get(function () {
 	return this.views.length;
 });
 
-export const Video = mongoose.model("video", videoSchema);
+const Video = mongoose.model("video", videoSchema);
+export default Video;
