@@ -6,9 +6,11 @@ import userRouter from "./routes/User.js";
 import videoRouter from "./routes/Video.js";
 import cookieParser from "cookie-parser";
 
-const PORT = process.env.PORT || 1234;
-const app = express();
 dotenv.config();
+const PORT = process.env.PORT || 1234;
+const URI = process.env.MONGO_URI;
+
+const app = express();
 app.use(cors());
 app.use(cookieParser());
 app.use("/user", userRouter);
@@ -17,9 +19,8 @@ app.use("/video", videoRouter);
 app.get("/", (_req, res) => {
 	res.json({ hello: "world" });
 });
-const uri = process.env.MONGO_URI;
 
-mongoose.connect(uri, () => {
+mongoose.connect(URI, () => {
 	console.log("Database connected");
 });
 

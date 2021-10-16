@@ -1,8 +1,8 @@
-import { Router } from "express";
 import formidable from "formidable";
-import { createJWT, verifyJWT } from "../helpers/jwt.js";
-import { isAuthenticated } from "../middlewares/auth.js";
+import jwt from "jsonwebtoken";
 import User from "../models/User.js";
+import { Router } from "express";
+import { isAuthenticated } from "../middlewares/auth.js";
 
 const userRouter = Router();
 
@@ -18,8 +18,11 @@ userRouter.post("/login", async (req, res, next) => {
 		});
 		if (user) {
 			if (fields.password === user.password.at(-1)) {
-				const token = createJWT(JSON.stringify(user));
-				res.setHeader("Set-Cookie", "jid=" + token);
+				const token = jwt.sign(
+					JSON.stringify(user),
+					process.env.JWT_SECRET,
+				);
+				res.setHeader("Set-Cookie", `jid=${token}; HttpOnly`);
 				return res.json({ success: true, error: null });
 			}
 			return res.json({ success: false, error: "Wrong password" });
@@ -33,7 +36,6 @@ userRouter.post("/signup", (req, res, next) => {
 	form.parse(req, async (err, fields) => {
 		if (err) {
 			next(err);
-			return;
 		}
 		try {
 			fields.name = {
@@ -42,18 +44,21 @@ userRouter.post("/signup", (req, res, next) => {
 				salutation: fields.salutation,
 			};
 			const user = await User.create(fields);
-			const token = createJWT(JSON.stringify(user));
-			res.setHeader("Set-Cookie", "jid=" + token);
-			return res.json({ success: true, error: null });
+			const token = jwt.sign(
+				JSON.stringify(user),
+				process.env.JWT_SECRET,
+			);
+			res.setHeader("Set-Cookie", `jid=${token}; HttpOnly`);
+			return res.status(201).json({ success: true, error: null });
 		} catch (err) {
 			next(err);
 		}
 	});
 });
 
-userRouter.get("/logout", isAuthenticated, async (req, res) => {
-	res.setHeader("Set-Cookie", "jid=");
-	res.redirect("/");
+userRouter.get("/logout", isAuthenticated, async (_req, res) => {
+	res.setHeader("Set-Cookie", "jid=; HttpOnly");
+	return res.json({ success: true, error: null });
 });
 
 userRouter.get("/:userId", isAuthenticated, async (req, res) => {

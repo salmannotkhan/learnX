@@ -1,7 +1,5 @@
 import jwt from "jsonwebtoken";
-import dotenv from "dotenv";
 
-dotenv.config();
 export const isAuthenticated = (req, res, next) => {
 	const token = req.cookies.jid;
 	if (token) {
@@ -11,9 +9,9 @@ export const isAuthenticated = (req, res, next) => {
 			next();
 		} catch (err) {
 			console.log(err);
-			return res.json({ error: "Unauthorized" });
+			return res.status(401).json({ error: "Unauthorized" });
 		}
 	} else {
-		return res.json({ error: "Unauthorized" });
+		return res.status(401).json({ error: "Unauthorized" });
 	}
 };
