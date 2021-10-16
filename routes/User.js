@@ -1,5 +1,7 @@
 import { Router } from "express";
 import formidable from "formidable";
+import { createJWT, verifyJWT } from "../helpers/jwt.js";
+import { isAuthenticated } from "../middlewares/auth.js";
 import User from "../models/User.js";
 
 const userRouter = Router();
@@ -16,14 +18,13 @@ userRouter.post("/login", async (req, res, next) => {
 		});
 		if (user) {
 			if (fields.password === user.password.at(-1)) {
-				res.json({ success: true, error: null, userId: user.id });
-				// TODO: JWT generation here
-				return;
+				const token = createJWT(JSON.stringify(user));
+				res.setHeader("Set-Cookie", "jid=" + token);
+				return res.json({ success: true, error: null });
 			}
-			res.json({ success: false, error: "Wrong password" });
-			return;
+			return res.json({ success: false, error: "Wrong password" });
 		}
-		res.json({ success: false, error: "User doesn't exists" });
+		return res.json({ success: false, error: "User doesn't exists" });
 	});
 });
 
@@ -41,21 +42,26 @@ userRouter.post("/signup", (req, res, next) => {
 				salutation: fields.salutation,
 			};
 			const user = await User.create(fields);
-			res.json({ success: true, error: null });
-			// TODO: JWT generation here
-			return;
+			const token = createJWT(JSON.stringify(user));
+			res.setHeader("Set-Cookie", "jid=" + token);
+			return res.json({ success: true, error: null });
 		} catch (err) {
 			next(err);
 		}
 	});
 });
 
-userRouter.get("/:userId", async (req, res) => {
+userRouter.get("/logout", isAuthenticated, async (req, res) => {
+	res.setHeader("Set-Cookie", "jid=");
+	res.redirect("/");
+});
+
+userRouter.get("/:userId", isAuthenticated, async (req, res) => {
+	console.log(req.user);
 	try {
 		const user = await User.findById(req.params.userId);
 		if (user) {
-			res.json(user);
-			return;
+			return res.json(user);
 		}
 		res.status(404).send({ error: "User not found :/" });
 	} catch {

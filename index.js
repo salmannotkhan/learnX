@@ -4,12 +4,13 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import userRouter from "./routes/User.js";
 import videoRouter from "./routes/Video.js";
+import cookieParser from "cookie-parser";
 
 const PORT = process.env.PORT || 1234;
 const app = express();
 dotenv.config();
 app.use(cors());
-
+app.use(cookieParser());
 app.use("/user", userRouter);
 app.use("/video", videoRouter);
 
