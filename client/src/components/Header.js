@@ -9,7 +9,7 @@ function Header() {
       <header className="navbar">
         <div className="container">
           <div className="navbar-brand">
-            <Link to="/adminpanel" style={{ fontSize: 40 }}>
+            <Link to="/adminpanel" style={{ fontSize: 40, color: "#060325" }}>
               LearnX
             </Link>
           </div>

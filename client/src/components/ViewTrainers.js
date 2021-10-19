@@ -6,8 +6,8 @@ function ViewTrainers() {
 <section className="hero is-fullheight" style={{fontFamily:"Comfortaa"}}>
         <div className="hero-body">
             <div className="container">
-                <h2 class="title is-2" style={{textAlign:'center'}}>Trainer List</h2>
-                    <table class="table table is-fullwidth" style={{borderRadius:20}}>
+                <h2 className="title is-2" style={{textAlign:'center'}}>Trainer List</h2>
+                    <table className="table table is-fullwidth" style={{borderRadius:20}}>
                         <thead>
                             <tr style={{fontWeight:"bold", fontSize:20}}>
                                 <th>Sr.No</th>
