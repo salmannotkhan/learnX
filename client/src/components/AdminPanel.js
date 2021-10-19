@@ -79,7 +79,7 @@ function AdminPanel() {
                 <div className="card">
                   <div className="card-image">
                     <figure className="image is-4by3">
-                      <img src={Videos} alt="Placeholder image"></img>
+                      <img src={Videos} alt="Videos"></img>
                     </figure>
                   </div>
                   <div className="card-content">
@@ -108,7 +108,7 @@ function AdminPanel() {
                 <div className="card">
                   <div className="card-image">
                     <figure className="image is-4by3">
-                      <img src={Subscriptions} alt="Placeholder image"></img>
+                      <img src={Subscriptions} alt="Subscription"></img>
                     </figure>
                   </div>
                   <div className="card-content">

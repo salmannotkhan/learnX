@@ -1,6 +1,6 @@
 import React from "react";
 import "bulma/css/bulma.min.css";
-import UserLogin from "../images/UserLogin.jpeg";
+
 import { Link } from "react-router-dom";
 import loginimg from "../images/1.png";
 function Login() {
@@ -14,18 +14,18 @@ function Login() {
           <div className="box">
             <form style={{ backgroundColor: "#FFFFFF" }}>
               <h3
-                class="title is-4"
+                className="title is-4"
                 style={{ color: "#060325", textAlign: "center" }}
               >
                 Welcome Back !! Login Here :)
               </h3>
-              <div class="columns is-vcentered">
-                <div class="column is-8">
-                  <figure class="image is-5by3">
+              <div className="columns is-vcentered">
+                <div className="column is-8">
+                  <figure className="image is-5by3">
                     <img src={loginimg} alt="Error"></img>
                   </figure>
                 </div>
-                <div class="column">
+                <div className="column">
                   <div className="columns is-vcentered">
                     <div className="column is-11">
                       <div className="field">
@@ -52,7 +52,7 @@ function Login() {
                         <div className="control">
                           <input
                             className="input"
-                            type="text"
+                            type="password"
                             placeholder="Enter Password"
                             style={{ backgroundColor: "transparent" }}
                           ></input>
@@ -62,10 +62,10 @@ function Login() {
                   </div>
                   <div className="columns is-centered is-vcentered">
                     <div className="column is-9">
-                      <div class="field is-grouped">
-                        <p class="control">
-                          <a
-                            class="button is-primary"
+                      <div className="field is-grouped">
+                        <p className="control">
+                          <Link
+                            className="button is-primary"
                             style={{
                               color: "#112031",
                               backgroundColor: "#FFFFF",
@@ -73,23 +73,23 @@ function Login() {
                             }}
                           >
                             SignIn
-                          </a>
+                          </Link>
                         </p>
-                        <p class="control">
-                          <a
-                            class="button is-light"
+                        <p className="control">
+                          <Link
+                            className="button is-light"
                             style={{ color: "#112031", borderRadius: 25 }}
                           >
                             Cancel
-                          </a>
+                          </Link>
                         </p>
                       </div>
                     </div>
                   </div>
                   <div className="columns  is-centered is-vcentered">
                     <div className="column is-10">
-                      <div class="field is-grouped">
-                        <p class="control">
+                      <div className="field is-grouped">
+                        <p className="control">
                           <Link
                             to="Register"
                             style={{

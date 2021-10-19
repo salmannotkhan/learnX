@@ -16,21 +16,21 @@ function Register() {
                 backgroundColor: "#FFFFFF",
               }}
             >
-              <div class="columns is-vcentered">
-                <div class="column is-8">
+              <div className="columns is-vcentered">
+                <div className="column is-8">
                   <h3
-                    class="title is-4"
+                    className="title is-4"
                     style={{ color: "#060325", textAlign: "center" }}
                   >
                     Hello Folks...! Register Here : )
                   </h3>
-                  <figure class="image is-16by9">
+                  <figure className="image is-16by9">
                     <img src={RegisterUser} alt="Error"></img>
                   </figure>
                 </div>
-                <div class="column">
-                  <div class="columns is-multiline is-mobile">
-                    <div class="column is-full">
+                <div className="column">
+                  <div className="columns is-multiline is-mobile">
+                    <div className="column is-full">
                       <div className="field">
                         <label className="label" style={{ color: "#060325" }}>
                           First Name
@@ -45,7 +45,7 @@ function Register() {
                         </div>
                       </div>
                     </div>
-                    <div class="column is-full">
+                    <div className="column is-full">
                       <div className="field">
                         <label className="label" style={{ color: "#060325" }}>
                           Last Name
@@ -60,7 +60,7 @@ function Register() {
                         </div>
                       </div>
                     </div>
-                    <div class="column is-full">
+                    <div className="column is-full">
                       <div className="field">
                         <label className="label" style={{ color: "#060325" }}>
                           Email
@@ -75,7 +75,7 @@ function Register() {
                         </div>
                       </div>
                     </div>
-                    <div class="column is-half">
+                    <div className="column is-half">
                       <div className="field">
                         <label className="label" style={{ color: "#060325" }}>
                           Mobile
@@ -91,7 +91,7 @@ function Register() {
                       </div>
                     </div>
 
-                    <div class="column is-half">
+                    <div className="column is-half">
                       <div className="field">
                         <label className="label" style={{ color: "#060325" }}>
                           Password
@@ -106,13 +106,13 @@ function Register() {
                         </div>
                       </div>
                     </div>
-                    <div class="column is-full">
+                    <div className="column is-full">
                       <div className="field">
                         <label className="label" style={{ color: "#060325" }}>
                           Role
                         </label>
                         <div className="control">
-                          <label class="radio" style={{ color: "#112031" }}>
+                          <label className="radio" style={{ color: "#112031" }}>
                             Trainer
                             <input
                               type="radio"
@@ -120,7 +120,7 @@ function Register() {
                               value="Trainer"
                             />
                           </label>
-                          <label class="radio" style={{ color: "#112031" }}>
+                          <label className="radio" style={{ color: "#112031" }}>
                             Trainee
                             <input
                               type="radio"
@@ -135,32 +135,32 @@ function Register() {
                   <div className="columns is-centered is-vcentered">
                     <div className="column is-8">
                       <div
-                        class="field is-grouped"
+                        className="field is-grouped"
                         style={{ fontFamily: "Comfortaa" }}
                       >
-                        <p class="control">
-                          <a
-                            class="button is-primary"
+                        <p className="control">
+                          <Link
+                            className="button is-primary"
                             style={{ color: "#112031", borderRadius: 25 }}
                           >
                             Register
-                          </a>
+                          </Link>
                         </p>
-                        <p class="control">
-                          <a
-                            class="button is-light"
+                        <p className="control">
+                          <Link
+                            className="button is-light"
                             style={{ color: "#112031", borderRadius: 25 }}
                           >
                             Cancel
-                          </a>
+                          </Link>
                         </p>
                       </div>
                     </div>
                   </div>
                   <div className="columns is-centered is-vcentered">
                     <div className="column is-9">
-                      <div class="field is-grouped">
-                        <p class="control">
+                      <div className="field is-grouped">
+                        <p className="control">
                           <Link
                             to="Login"
                             style={{

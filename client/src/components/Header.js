@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Logo from "../images/learnXLogo.png";
 function Header() {
   return (
     <div
@@ -17,37 +16,37 @@ function Header() {
           <div id="navbarMenuHeroC" className="navbar-menu">
             <div className="navbar-end">
               <div className="navbar-item has-dropdown is-hoverable">
-                <a className="navbar-link" style={{ color: "#060325" }}>
+                <Link className="navbar-link" style={{ color: "#060325" }}>
                   Manage
-                </a>
+                </Link>
                 <div className="navbar-dropdown" style={{ color: "#060325" }}>
-                  <a className="navbar-item">
+                  <Link className="navbar-item">
                     <Link to="/viewtrainers">View Trainers</Link>
-                  </a>
+                  </Link>
 
-                  <a className="navbar-item">
+                  <Link className="navbar-item">
                     <Link to="viewtrainees"> View Trainees</Link>
-                  </a>
+                  </Link>
 
-                  <a className="navbar-item">
+                  <Link className="navbar-item">
                     <Link to="viewvideos"> View Videos</Link>
-                  </a>
+                  </Link>
 
-                  <a className="navbar-item">
+                  <Link className="navbar-item">
                     <Link to="viewsubscriptions"> View Subscriptions</Link>
-                  </a>
+                  </Link>
                 </div>
               </div>
-              <a className="navbar-item">
+              <Link className="navbar-item">
                 <Link to="adminpanel" style={{ color: "#060325" }}>
                   Home
                 </Link>
-              </a>
+              </Link>
               <div className="navbar-item">
                 <div className="buttons">
-                  <a className="button is-primary">
+                  <Link className="button is-primary">
                     <strong>Logout</strong>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
