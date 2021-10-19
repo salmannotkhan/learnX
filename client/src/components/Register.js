@@ -1,28 +1,36 @@
 import React from "react";
 import RegisterUser from "../images/RegisterUser.png";
+import { Link } from "react-router-dom";
+
 function Register() {
   return (
     <div className="hero is-fullheight">
       <div className="columns">
-        <div className="column is-four-fifths" style={{ margin: "auto" }}>
+        <div
+          className="column is-four-fifths"
+          style={{ margin: "auto", marginTop: 25 }}
+        >
           <div className="box">
             <form
               style={{
                 backgroundColor: "#FFFFFF",
               }}
             >
-              <h3 class="title is-4" style={{ color: "#060325" }}>
-                Hello There !! Register Here :)
-              </h3>
               <div class="columns is-vcentered">
                 <div class="column is-8">
+                  <h3
+                    class="title is-4"
+                    style={{ color: "#060325", textAlign: "center" }}
+                  >
+                    Hello Folks...! Register Here : )
+                  </h3>
                   <figure class="image is-16by9">
                     <img src={RegisterUser} alt="Error"></img>
                   </figure>
                 </div>
                 <div class="column">
                   <div class="columns is-multiline is-mobile">
-                    <div class="column is-half">
+                    <div class="column is-full">
                       <div className="field">
                         <label className="label" style={{ color: "#060325" }}>
                           First Name
@@ -37,7 +45,7 @@ function Register() {
                         </div>
                       </div>
                     </div>
-                    <div class="column is-half">
+                    <div class="column is-full">
                       <div className="field">
                         <label className="label" style={{ color: "#060325" }}>
                           Last Name
@@ -47,6 +55,21 @@ function Register() {
                             className="input"
                             type="text"
                             placeholder="Enter Last Name"
+                            style={{ backgroundColor: "#transparent" }}
+                          ></input>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="column is-full">
+                      <div className="field">
+                        <label className="label" style={{ color: "#060325" }}>
+                          Email
+                        </label>
+                        <div className="control">
+                          <input
+                            className="input"
+                            type="text"
+                            placeholder="Enter Email"
                             style={{ backgroundColor: "#transparent" }}
                           ></input>
                         </div>
@@ -67,21 +90,7 @@ function Register() {
                         </div>
                       </div>
                     </div>
-                    <div class="column is-half">
-                      <div className="field">
-                        <label className="label" style={{ color: "#060325" }}>
-                          Email
-                        </label>
-                        <div className="control">
-                          <input
-                            className="input"
-                            type="text"
-                            placeholder="Enter Email"
-                            style={{ backgroundColor: "#transparent" }}
-                          ></input>
-                        </div>
-                      </div>
-                    </div>
+
                     <div class="column is-half">
                       <div className="field">
                         <label className="label" style={{ color: "#060325" }}>
@@ -97,7 +106,7 @@ function Register() {
                         </div>
                       </div>
                     </div>
-                    <div class="column is-half">
+                    <div class="column is-full">
                       <div className="field">
                         <label className="label" style={{ color: "#060325" }}>
                           Role
@@ -124,7 +133,7 @@ function Register() {
                     </div>
                   </div>
                   <div className="columns is-centered is-vcentered">
-                    <div className="column is-7">
+                    <div className="column is-8">
                       <div
                         class="field is-grouped"
                         style={{ fontFamily: "Comfortaa" }}
@@ -150,23 +159,19 @@ function Register() {
                   </div>
                   <div className="columns is-centered is-vcentered">
                     <div className="column is-9">
-                      <div
-                        class="field is-grouped"
-                        style={{ fontFamily: "Comfortaa" }}
-                      >
+                      <div class="field is-grouped">
                         <p class="control">
-                          <a
-                            class="button"
-                            href="Login"
+                          <Link
+                            to="Login"
                             style={{
                               backgroundColor: "transparent",
                               borderColor: "transparent",
-                              fontFamily: "Comfortaa",
+
                               color: "#112031",
                             }}
                           >
                             Already a User? Login Here
-                          </a>
+                          </Link>
                         </p>
                       </div>
                     </div>

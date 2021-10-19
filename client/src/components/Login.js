@@ -1,23 +1,28 @@
 import React from "react";
 import "bulma/css/bulma.min.css";
 import UserLogin from "../images/UserLogin.jpeg";
+import { Link } from "react-router-dom";
+import loginimg from "../images/1.png";
 function Login() {
   return (
     <div className="hero is-fullheight">
       <div className="columns is-vcentered">
-        <div className="column is-three-quarters is-offset-1 ">
+        <div
+          className="column is-three-quarters"
+          style={{ margin: "auto", marginTop: 90 }}
+        >
           <div className="box">
             <form style={{ backgroundColor: "#FFFFFF" }}>
               <h3
                 class="title is-4"
-                style={{ color: "#060325", fontFamily: "Comfortaa" }}
+                style={{ color: "#060325", textAlign: "center" }}
               >
                 Welcome Back !! Login Here :)
               </h3>
               <div class="columns is-vcentered">
                 <div class="column is-8">
                   <figure class="image is-5by3">
-                    <img src={UserLogin} alt="Error"></img>
+                    <img src={loginimg} alt="Error"></img>
                   </figure>
                 </div>
                 <div class="column">
@@ -56,11 +61,8 @@ function Login() {
                     </div>
                   </div>
                   <div className="columns is-centered is-vcentered">
-                    <div className="column is-10">
-                      <div
-                        class="field is-grouped"
-                        style={{ fontFamily: "Comfortaa" }}
-                      >
+                    <div className="column is-9">
+                      <div class="field is-grouped">
                         <p class="control">
                           <a
                             class="button is-primary"
@@ -84,25 +86,20 @@ function Login() {
                       </div>
                     </div>
                   </div>
-                  <div className="columns  is-vcentered">
-                    <div className="column is-12">
-                      <div
-                        class="field is-grouped"
-                        style={{ fontFamily: "Comfortaa" }}
-                      >
+                  <div className="columns  is-centered is-vcentered">
+                    <div className="column is-10">
+                      <div class="field is-grouped">
                         <p class="control">
-                          <a
-                            class="button"
-                            href="Register"
+                          <Link
+                            to="Register"
                             style={{
                               backgroundColor: "transparent",
                               borderColor: "transparent",
-                              fontFamily: "Comfortaa",
                               color: "#112031",
                             }}
                           >
                             New User? Create Account
-                          </a>
+                          </Link>
                         </p>
                       </div>
                     </div>
