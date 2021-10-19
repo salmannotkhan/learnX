@@ -1,0 +1,119 @@
+import React from "react";
+import "bulma/css/bulma.min.css";
+import UserLogin from "../images/UserLogin.jpeg";
+function Login() {
+  return (
+    <div className="hero is-fullheight">
+      <div className="columns is-vcentered">
+        <div className="column is-three-quarters is-offset-1 ">
+          <div className="box">
+            <form style={{ backgroundColor: "#FFFFFF" }}>
+              <h3
+                class="title is-4"
+                style={{ color: "#060325", fontFamily: "Comfortaa" }}
+              >
+                Welcome Back !! Login Here :)
+              </h3>
+              <div class="columns is-vcentered">
+                <div class="column is-8">
+                  <figure class="image is-5by3">
+                    <img src={UserLogin} alt="Error"></img>
+                  </figure>
+                </div>
+                <div class="column">
+                  <div className="columns is-vcentered">
+                    <div className="column is-11">
+                      <div className="field">
+                        <label className="label" style={{ color: "#060325" }}>
+                          Username
+                        </label>
+                        <div className="control">
+                          <input
+                            className="input"
+                            type="text"
+                            placeholder="Enter Username"
+                            style={{ backgroundColor: "transparent" }}
+                          ></input>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="columns is-vcentered">
+                    <div className="column is-11">
+                      <div className="field">
+                        <label className="label" style={{ color: "#060325" }}>
+                          Password
+                        </label>
+                        <div className="control">
+                          <input
+                            className="input"
+                            type="text"
+                            placeholder="Enter Password"
+                            style={{ backgroundColor: "transparent" }}
+                          ></input>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="columns is-centered is-vcentered">
+                    <div className="column is-10">
+                      <div
+                        class="field is-grouped"
+                        style={{ fontFamily: "Comfortaa" }}
+                      >
+                        <p class="control">
+                          <a
+                            class="button is-primary"
+                            style={{
+                              color: "#112031",
+                              backgroundColor: "#FFFFF",
+                              borderRadius: 25,
+                            }}
+                          >
+                            SignIn
+                          </a>
+                        </p>
+                        <p class="control">
+                          <a
+                            class="button is-light"
+                            style={{ color: "#112031", borderRadius: 25 }}
+                          >
+                            Cancel
+                          </a>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="columns  is-vcentered">
+                    <div className="column is-12">
+                      <div
+                        class="field is-grouped"
+                        style={{ fontFamily: "Comfortaa" }}
+                      >
+                        <p class="control">
+                          <a
+                            class="button"
+                            href="Register"
+                            style={{
+                              backgroundColor: "transparent",
+                              borderColor: "transparent",
+                              fontFamily: "Comfortaa",
+                              color: "#112031",
+                            }}
+                          >
+                            New User? Create Account
+                          </a>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+export default Login;
