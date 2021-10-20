@@ -1,9 +1,20 @@
-import React from "react";
-import "bulma/css/bulma.min.css";
-
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import loginimg from "../images/1.png";
+import "bulma/css/bulma.min.css";
+
 function Login() {
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+
+	const handleLogin = (e) => {
+		e.preventDefault();
+		const payload = new FormData(e.target);
+		const xhr = new XMLHttpRequest();
+		xhr.open("POST", "http://localhost:1234/user/login");
+		xhr.send(payload);
+		xhr.addEventListener("loadend", () => console.log(xhr.response));
+	};
 	return (
 		<div className="hero is-fullheight">
 			<div className="columns is-vcentered">
@@ -11,7 +22,9 @@ function Login() {
 					className="column is-three-quarters"
 					style={{ margin: "auto", marginTop: 90 }}>
 					<div className="box">
-						<form style={{ backgroundColor: "#FFFFFF" }}>
+						<form
+							style={{ backgroundColor: "#FFFFFF" }}
+							onSubmit={(e) => handleLogin(e)}>
 							<h3
 								className="title is-4"
 								style={{
@@ -41,7 +54,14 @@ function Login() {
 													<input
 														className="input"
 														type="text"
-														placeholder="Enter Username"
+														placeholder="Email"
+														name="email"
+														value={email}
+														onChange={(e) =>
+															setEmail(
+																e.target.value
+															)
+														}
 														style={{
 															backgroundColor:
 																"transparent",
@@ -64,7 +84,14 @@ function Login() {
 													<input
 														className="input"
 														type="password"
-														placeholder="Enter Password"
+														placeholder="Password"
+														name="password"
+														value={password}
+														onChange={(e) =>
+															setPassword(
+																e.target.value
+															)
+														}
 														style={{
 															backgroundColor:
 																"transparent",
@@ -73,38 +100,19 @@ function Login() {
 											</div>
 										</div>
 									</div>
-									<div className="columns is-centered is-vcentered">
-										<div className="column is-9">
+									<div className="columns is-vcentered">
+										<div className="column is-12 has-text-vcenter">
 											<div className="field is-grouped">
-												<p className="control">
-													<Link
-														className="button is-primary"
-														style={{
-															color: "#112031",
-															backgroundColor:
-																"#FFFFF",
-															borderRadius: 25,
-														}}>
-														SignIn
-													</Link>
-												</p>
-												<p className="control">
-													<Link
-														className="button is-light"
-														style={{
-															color: "#112031",
-															borderRadius: 25,
-														}}>
-														Cancel
-													</Link>
-												</p>
-											</div>
-										</div>
-									</div>
-									<div className="columns  is-centered is-vcentered">
-										<div className="column is-10">
-											<div className="field is-grouped">
-												<p className="control">
+												<button
+													className="button is-primary is-rounded mr-6"
+													style={{
+														color: "#112031",
+														backgroundColor:
+															"#FFFFF",
+													}}>
+													SignIn
+												</button>
+												<p className="control mt-2">
 													<Link
 														to="Register"
 														style={{

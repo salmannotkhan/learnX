@@ -20,7 +20,7 @@ userRouter.post("/login", async (req, res, next) => {
 			if (fields.password === user.password.at(-1)) {
 				const token = jwt.sign(
 					JSON.stringify(user),
-					process.env.JWT_SECRET,
+					process.env.JWT_SECRET
 				);
 				res.setHeader("Set-Cookie", `jid=${token}; HttpOnly`);
 				return res.json({ success: true, error: null });
@@ -46,7 +46,7 @@ userRouter.post("/signup", (req, res, next) => {
 			const user = await User.create(fields);
 			const token = jwt.sign(
 				JSON.stringify(user),
-				process.env.JWT_SECRET,
+				process.env.JWT_SECRET
 			);
 			res.setHeader("Set-Cookie", `jid=${token}; HttpOnly`);
 			return res.status(201).json({ success: true, error: null });
