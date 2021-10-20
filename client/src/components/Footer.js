@@ -1,13 +1,16 @@
-import React from 'react'
+import React from "react";
 
 function Footer() {
     return (
-        <div className="hero-foot" style={{backgroundColor:"white"}}>
-            <div className="container has-text-centered" style={{fontFamily:"Comfortaa"}}>
+        <div className="hero-foot" style={{ backgroundColor: "white" }}>
+            <div
+                className="container has-text-centered"
+                style={{ fontFamily: "Comfortaa" }}
+            >
                 &copy; Copyright 2021 LearnX
             </div>
-    </div>
-    )
+        </div>
+    );
 }
 
-export default Footer
+export default Footer;
