@@ -24,8 +24,7 @@ export default function Stream(props) {
 			<video
 				ref={videoElement}
 				playsInline={true}
-				autoPlay={true}
-			></video>
+				autoPlay={true}></video>
 		</>
 	);
 }
