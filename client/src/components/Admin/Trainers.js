@@ -1,6 +1,6 @@
 import React from "react";
 
-function ViewTrainees() {
+function Trainers() {
     return (
         <>
             <section
@@ -13,7 +13,7 @@ function ViewTrainees() {
                             className="title is-2"
                             style={{ textAlign: "center" }}
                         >
-                            Trainees List
+                            Trainer List
                         </h2>
                         <table
                             className="table table is-fullwidth"
@@ -110,4 +110,4 @@ function ViewTrainees() {
     );
 }
 
-export default ViewTrainees;
+export default Trainers;

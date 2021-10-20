@@ -10,7 +10,7 @@ function Header() {
                 <div className="container">
                     <div className="navbar-brand">
                         <Link
-                            to="/adminpanel"
+                            to="/admin/panel"
                             style={{ fontSize: 40, color: "#060325" }}
                         >
                             LearnX
@@ -30,28 +30,28 @@ function Header() {
                                     style={{ color: "#060325" }}
                                 >
                                     <Link className="navbar-item">
-                                        <Link to="/viewtrainers">
-                                            View Trainers
+                                        <Link to="/admin/trainers">
+                                            Trainers
                                         </Link>
                                     </Link>
                                     <Link className="navbar-item">
-                                        <Link to="viewtrainees">
-                                            View Trainees
+                                        <Link to="/admin/trainees">
+                                            Trainees
                                         </Link>
                                     </Link>
                                     <Link className="navbar-item">
-                                        <Link to="viewvideos">View Videos</Link>
+                                        <Link to="/admin/videos">Videos</Link>
                                     </Link>
                                     <Link className="navbar-item">
-                                        <Link to="viewsubscriptions">
-                                            View Subscriptions
+                                        <Link to="/admin/subscriptions">
+                                            Subscriptions
                                         </Link>
                                     </Link>
                                 </div>
                             </div>
                             <Link className="navbar-item">
                                 <Link
-                                    to="adminpanel"
+                                    to="/admin/panel"
                                     style={{ color: "#060325" }}
                                 >
                                     Home

@@ -50,7 +50,7 @@ function AdminPanel() {
                                     </div>
                                     <footer className="card-footer">
                                         <Link
-                                            to="viewtrainers"
+                                            to="trainers"
                                             className="card-footer-item"
                                         >
                                             View
@@ -91,7 +91,7 @@ function AdminPanel() {
                                     </div>
                                     <footer className="card-footer">
                                         <Link
-                                            to="viewtrainees"
+                                            to="trainees"
                                             className="card-footer-item"
                                         >
                                             View
@@ -132,7 +132,7 @@ function AdminPanel() {
                                     </div>
                                     <footer className="card-footer">
                                         <Link
-                                            to="viewvideos"
+                                            to="videos"
                                             className="card-footer-item"
                                         >
                                             View
@@ -173,7 +173,7 @@ function AdminPanel() {
                                     </div>
                                     <footer className="card-footer">
                                         <Link
-                                            to="viewsubscriptions"
+                                            to="subscriptions"
                                             className="card-footer-item"
                                         >
                                             View

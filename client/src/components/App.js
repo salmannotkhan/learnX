@@ -1,14 +1,14 @@
 import "../styles/App.css";
 import Register from "./Register";
 import Login from "./Login";
-import AdminPanel from "./Admin/AdminPanel";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import ViewTrainers from "./Admin/ViewTrainers";
+import AdminPanel from "./Admin/AdminPanel";
+import Trainers from "./Admin/Trainers";
 import Header from "./Admin/Header";
 import Footer from "./Admin/Footer";
-import ViewTrainees from "./Admin/ViewTrainees";
-import ViewVideos from "./Admin/ViewVideos";
-import ViewSubscriptions from "./Admin/ViewSubscriptions";
+import Trainees from "./Admin/Trainees";
+import Videos from "./Admin/Videos";
+import Subscriptions from "./Admin/Subscriptions";
 
 const App = () => {
     return (
@@ -22,33 +22,33 @@ const App = () => {
                     <Login />
                 </Route>
 
-                <Route path="/adminpanel">
+                <Route path="/admin/panel">
                     <Header />
                     <AdminPanel />
                     <Footer />
                 </Route>
 
-                <Route path="/viewtrainers">
+                <Route path="/admin/trainers">
                     <Header />
-                    <ViewTrainers />
+                    <Trainers />
                     <Footer />
                 </Route>
 
-                <Route path="/viewtrainees">
+                <Route path="/admin/trainees">
                     <Header />
-                    <ViewTrainees />
+                    <Trainees />
                     <Footer />
                 </Route>
 
-                <Route path="/viewvideos">
+                <Route path="/admin/videos">
                     <Header />
-                    <ViewVideos />
+                    <Videos />
                     <Footer />
                 </Route>
 
-                <Route path="/viewsubscriptions">
+                <Route path="/admin/subscriptions">
                     <Header />
-                    <ViewSubscriptions />
+                    <Subscriptions />
                     <Footer />
                 </Route>
             </Switch>
