@@ -1,14 +1,14 @@
 import "../styles/App.css";
 import Register from "./Register";
 import Login from "./Login";
-import AdminPanel from "./AdminPanel";
+import AdminPanel from "./Admin/AdminPanel";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import ViewTrainers from "./ViewTrainers";
-import Header from "./Header";
-import Footer from "./Footer";
-import ViewTrainees from "./ViewTrainees";
-import ViewVideos from "./ViewVideos";
-import ViewSubscriptions from "./ViewSubscriptions";
+import ViewTrainers from "./Admin/ViewTrainers";
+import Header from "./Admin/Header";
+import Footer from "./Admin/Footer";
+import ViewTrainees from "./Admin/ViewTrainees";
+import ViewVideos from "./Admin/ViewVideos";
+import ViewSubscriptions from "./Admin/ViewSubscriptions";
 
 const App = () => {
     return (

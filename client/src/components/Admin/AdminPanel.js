@@ -1,9 +1,9 @@
 import React from "react";
 // import learnxlogo from "../images/learnXLogo.png"
-import Trainer from "../images/Trainers.png";
-import Trainee from "../images/Trainee.jpg";
-import Videos from "../images/Videos.jpeg";
-import Subscriptions from "../images/Subscription.jpg";
+import Trainer from "../../images/Trainers.png";
+import Trainee from "../../images/Trainee.jpg";
+import Videos from "../../images/Videos.jpeg";
+import Subscriptions from "../../images/Subscription.jpg";
 import { Link } from "react-router-dom";
 function AdminPanel() {
     return (

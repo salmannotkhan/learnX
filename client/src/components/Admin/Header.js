@@ -36,19 +36,14 @@ function Header() {
                                     </Link>
                                     <Link className="navbar-item">
                                         <Link to="viewtrainees">
-                                            {" "}
                                             View Trainees
                                         </Link>
                                     </Link>
                                     <Link className="navbar-item">
-                                        <Link to="viewvideos">
-                                            {" "}
-                                            View Videos
-                                        </Link>
+                                        <Link to="viewvideos">View Videos</Link>
                                     </Link>
                                     <Link className="navbar-item">
                                         <Link to="viewsubscriptions">
-                                            {" "}
                                             View Subscriptions
                                         </Link>
                                     </Link>
