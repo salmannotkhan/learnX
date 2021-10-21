@@ -100,30 +100,32 @@ function Login() {
 											</div>
 										</div>
 									</div>
-									<div className="columns is-vcentered">
+									<div className="columns is-centered">
 										<div className="column is-12 has-text-vcenter">
 											<div className="field is-grouped">
-												<button
-													className="button is-primary is-rounded mr-6"
-													style={{
-														color: "#112031",
-														backgroundColor:
-															"#FFFFF",
-													}}>
-													SignIn
-												</button>
-												<p className="control mt-2">
+												<p className="control">
 													<Link
-														to="Register"
+														className="button is-primary"
 														style={{
-															backgroundColor:
-																"transparent",
-															borderColor:
-																"transparent",
 															color: "#112031",
+															borderRadius: 25,
 														}}>
-														New User? Create Account
+														SignIn
 													</Link>
+												</p>
+												<p className="control mt-2">
+													<p>
+														<strong>
+															New User?
+														</strong>
+														<Link
+															to="register"
+															style={{
+																margin: 5,
+															}}>
+															Click Here
+														</Link>
+													</p>
 												</p>
 											</div>
 										</div>

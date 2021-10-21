@@ -8,7 +8,7 @@ function Register() {
 			<div className="columns">
 				<div
 					className="column is-four-fifths"
-					style={{ margin: "auto", marginTop: 25 }}>
+					style={{ margin: "auto", marginTop: 35 }}>
 					<div className="box">
 						<form
 							style={{
@@ -32,7 +32,7 @@ function Register() {
 								</div>
 								<div className="column">
 									<div className="columns is-multiline is-mobile">
-										<div className="column is-full">
+										<div className="column is-half">
 											<div className="field">
 												<label
 													className="label"
@@ -45,7 +45,7 @@ function Register() {
 													<input
 														className="input"
 														type="text"
-														placeholder="Enter First Name"
+														placeholder="First Name"
 														style={{
 															backgroundColor:
 																"transparent",
@@ -53,7 +53,7 @@ function Register() {
 												</div>
 											</div>
 										</div>
-										<div className="column is-full">
+										<div className="column is-half">
 											<div className="field">
 												<label
 													className="label"
@@ -66,7 +66,7 @@ function Register() {
 													<input
 														className="input"
 														type="text"
-														placeholder="Enter Last Name"
+														placeholder="Last Name"
 														style={{
 															backgroundColor:
 																"#transparent",
@@ -87,7 +87,7 @@ function Register() {
 													<input
 														className="input"
 														type="text"
-														placeholder="Enter Email"
+														placeholder="Email"
 														style={{
 															backgroundColor:
 																"#transparent",
@@ -95,7 +95,7 @@ function Register() {
 												</div>
 											</div>
 										</div>
-										<div className="column is-half">
+										<div className="column is-full">
 											<div className="field">
 												<label
 													className="label"
@@ -108,7 +108,7 @@ function Register() {
 													<input
 														className="input"
 														type="number"
-														placeholder="Enter Mobile"
+														placeholder="Mobile"
 														style={{
 															backgroundColor:
 																"#transparent",
@@ -130,7 +130,7 @@ function Register() {
 													<input
 														className="input"
 														type="password"
-														placeholder="Enter Password"
+														placeholder="Password"
 														style={{
 															backgroundColor:
 																"#transparent",
@@ -138,7 +138,28 @@ function Register() {
 												</div>
 											</div>
 										</div>
-										<div className="column is-full">
+										<div className="column is-half">
+											<div className="field">
+												<label
+													className="label"
+													style={{
+														color: "#060325",
+													}}>
+													Confirm
+												</label>
+												<div className="control">
+													<input
+														className="input"
+														type="password"
+														placeholder="Confirm Password"
+														style={{
+															backgroundColor:
+																"#transparent",
+														}}></input>
+												</div>
+											</div>
+										</div>
+										<div className="column is-full ">
 											<div className="field">
 												<label
 													className="label"
@@ -176,8 +197,8 @@ function Register() {
 											</div>
 										</div>
 									</div>
-									<div className="columns is-centered is-vcentered">
-										<div className="column is-8">
+									<div className="columns ">
+										<div className="column is-12">
 											<div
 												className="field is-grouped"
 												style={{
@@ -190,41 +211,29 @@ function Register() {
 															color: "#112031",
 															borderRadius: 25,
 														}}>
-														Register
+														SignUp
 													</Link>
 												</p>
-												<p className="control">
-													<Link
-														className="button is-light"
-														style={{
-															color: "#112031",
-															borderRadius: 25,
-														}}>
-														Cancel
-													</Link>
+												<p className="control mt-2">
+													<p>
+														<strong>
+															Already a User?
+														</strong>
+														<Link
+															to="login"
+															style={{
+																margin: 5,
+															}}>
+															Login
+														</Link>
+													</p>
 												</p>
 											</div>
 										</div>
 									</div>
 									<div className="columns is-centered is-vcentered">
 										<div className="column is-9">
-											<div className="field is-grouped">
-												<p className="control">
-													<Link
-														to="Login"
-														style={{
-															backgroundColor:
-																"transparent",
-															borderColor:
-																"transparent",
-
-															color: "#112031",
-														}}>
-														Already a User? Login
-														Here
-													</Link>
-												</p>
-											</div>
+											<div className="field is-grouped"></div>
 										</div>
 									</div>
 								</div>
