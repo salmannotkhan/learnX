@@ -9,7 +9,7 @@ function AdminPanel() {
 	return (
 		<>
 			<section
-				className="hero is-fullheight"
+				className="hero is-fullheight is-success"
 				style={{ fontFamily: "Comfortaa" }}>
 				{/* <!-- Hero content: will be in the middle --> */}
 

@@ -46,6 +46,7 @@ function Register() {
 														className="input"
 														type="text"
 														placeholder="First Name"
+														required="true"
 														style={{
 															backgroundColor:
 																"transparent",
@@ -67,6 +68,7 @@ function Register() {
 														className="input"
 														type="text"
 														placeholder="Last Name"
+														required="true"
 														style={{
 															backgroundColor:
 																"#transparent",
@@ -109,6 +111,7 @@ function Register() {
 														className="input"
 														type="number"
 														placeholder="Mobile"
+														required
 														style={{
 															backgroundColor:
 																"#transparent",
@@ -131,6 +134,7 @@ function Register() {
 														className="input"
 														type="password"
 														placeholder="Password"
+														required="true"
 														style={{
 															backgroundColor:
 																"#transparent",
@@ -152,6 +156,7 @@ function Register() {
 														className="input"
 														type="password"
 														placeholder="Confirm Password"
+														required="true"
 														style={{
 															backgroundColor:
 																"#transparent",

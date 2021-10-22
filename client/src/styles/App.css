@@ -6,8 +6,8 @@
 	--pure: #ffffff;
 	--ternary: #eeecec;
 	--light: #ecd672;
-
-	background-color: #d8cbe9;
+	--normal: blue;
+	background-color: #d0bceb;
 }
 
 * {
