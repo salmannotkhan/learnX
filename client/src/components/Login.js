@@ -1,138 +1,165 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import loginimg from "../images/1.png";
+import axios from "axios";
 import "bulma/css/bulma.min.css";
 
 function Login() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [emailError, setEmailError] = useState("");
+	const [passwordError, setPasswordError] = useState("");
+	const [success, setSuccess] = useState(false);
+	const [loading, setLoading] = useState(false);
 
-	const handleLogin = (e) => {
+	const handleLogin = async (e) => {
 		e.preventDefault();
+		setEmailError("");
+		setPasswordError("");
+		setLoading(true);
 		const payload = new FormData(e.target);
-		const xhr = new XMLHttpRequest();
-		xhr.open("POST", "http://localhost:1234/user/login");
-		xhr.send(payload);
-		xhr.addEventListener("loadend", () => console.log(xhr.response));
+		const response = await axios.post("/user/login", payload);
+		if (!response.data.success) {
+			switch (response.data.type) {
+				case "email":
+					setEmailError(response.data.error);
+					break;
+				case "password":
+					setPasswordError(response.data.error);
+					break;
+				default:
+			}
+		}
+		setSuccess(response.data.success);
+		setLoading(false);
+		console.log(response);
 	};
+
+	if (success) return <Redirect to="/admin/panel" />;
+
 	return (
 		<div className="hero is-fullheight">
-			<div className="columns is-vcentered">
-				<div
-					className="column is-three-quarters"
-					style={{ margin: "auto", marginTop: 90 }}>
-					<div className="box">
-						<form
-							style={{ backgroundColor: "#FFFFFF" }}
-							onSubmit={(e) => handleLogin(e)}>
-							<h3
-								className="title is-4"
-								style={{
-									color: "#060325",
-									textAlign: "center",
-								}}>
-								Welcome Back !! Login Here :)
-							</h3>
-							<div className="columns is-vcentered">
-								<div className="column is-8">
-									<figure className="image is-5by3">
-										<img src={loginimg} alt="Error"></img>
-									</figure>
-								</div>
-								<div className="column">
+			<div className="hero-body">
+				<div className="container">
+					<div className="columns is-centered">
+						<div className="column is-10">
+							<div className="box">
+								<form onSubmit={handleLogin}>
+									<h3 className="title is-4 has-text-centered">
+										Welcome Back !! Login Here :)
+									</h3>
 									<div className="columns is-vcentered">
-										<div className="column is-11">
-											<div className="field">
-												<label
-													className="label"
-													style={{
-														color: "#060325",
-													}}>
-													Username
-												</label>
-												<div className="control">
-													<input
-														className="input"
-														type="text"
-														placeholder="Email"
-														name="email"
-														value={email}
-														onChange={(e) =>
-															setEmail(
-																e.target.value
-															)
-														}
-														style={{
-															backgroundColor:
-																"transparent",
-														}}></input>
+										<div className="column is-8">
+											<figure className="image is-5by3">
+												<img
+													src={loginimg}
+													alt="Error"></img>
+											</figure>
+										</div>
+										<div className="column">
+											<div className="columns is-vcentered">
+												<div className="column is-narrow">
+													<div className="field">
+														<label className="label">
+															Email
+														</label>
+														<div className="control">
+															<input
+																className={`input ${
+																	emailError
+																		? " is-danger"
+																		: ""
+																}`}
+																type="email"
+																required
+																placeholder="Email"
+																name="email"
+																value={email}
+																onChange={(e) =>
+																	setEmail(
+																		e.target
+																			.value
+																	)
+																}
+															/>
+														</div>
+														{emailError ? (
+															<p className="help is-danger">
+																{emailError}
+															</p>
+														) : null}
+													</div>
+												</div>
+											</div>
+											<div className="columns is-vcentered">
+												<div className="column is-narrow">
+													<div className="field">
+														<label className="label">
+															Password
+														</label>
+														<div className="control">
+															<input
+																className={`input ${
+																	passwordError
+																		? " is-danger"
+																		: ""
+																}`}
+																required
+																type="password"
+																placeholder="Password"
+																name="password"
+																value={password}
+																onChange={(e) =>
+																	setPassword(
+																		e.target
+																			.value
+																	)
+																}
+															/>
+														</div>
+														{passwordError ? (
+															<p className="help is-danger">
+																{passwordError}
+															</p>
+														) : null}
+													</div>
+												</div>
+											</div>
+											<div className="columns is-vcentered has-text-vcentered is-centered">
+												<div className="column is-12">
+													<div className="field is-grouped">
+														<p className="control">
+															<button
+																type="submit"
+																className={`button is-primary is-rounded ${
+																	loading
+																		? "is-loading"
+																		: ""
+																}`}
+																style={{
+																	color: "#112031",
+																}}>
+																Login
+															</button>
+														</p>
+														<p className="control mt-2">
+															<strong>
+																New User?
+															</strong>
+															<Link
+																className="ml-2"
+																to="register">
+																Click Here
+															</Link>
+														</p>
+													</div>
 												</div>
 											</div>
 										</div>
 									</div>
-									<div className="columns is-vcentered">
-										<div className="column is-11">
-											<div className="field">
-												<label
-													className="label"
-													style={{
-														color: "#060325",
-													}}>
-													Password
-												</label>
-												<div className="control">
-													<input
-														className="input"
-														type="password"
-														placeholder="Password"
-														name="password"
-														value={password}
-														onChange={(e) =>
-															setPassword(
-																e.target.value
-															)
-														}
-														style={{
-															backgroundColor:
-																"transparent",
-														}}></input>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div className="columns is-centered">
-										<div className="column is-12 has-text-vcenter">
-											<div className="field is-grouped">
-												<p className="control">
-													<Link
-														className="button is-primary"
-														style={{
-															color: "#112031",
-															borderRadius: 25,
-														}}>
-														SignIn
-													</Link>
-												</p>
-												<p className="control mt-2">
-													<p>
-														<strong>
-															New User?
-														</strong>
-														<Link
-															to="register"
-															style={{
-																margin: 5,
-															}}>
-															Click Here
-														</Link>
-													</p>
-												</p>
-											</div>
-										</div>
-									</div>
-								</div>
+								</form>
 							</div>
-						</form>
+						</div>
 					</div>
 				</div>
 			</div>

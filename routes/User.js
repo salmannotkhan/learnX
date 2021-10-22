@@ -25,9 +25,17 @@ userRouter.post("/login", async (req, res, next) => {
 				res.setHeader("Set-Cookie", `jid=${token}; HttpOnly`);
 				return res.json({ success: true, error: null });
 			}
-			return res.json({ success: false, error: "Wrong password" });
+			return res.json({
+				success: false,
+				type: "password",
+				error: "Wrong password",
+			});
 		}
-		return res.json({ success: false, error: "User doesn't exists" });
+		return res.json({
+			success: false,
+			type: "email",
+			error: "User doesn't exists",
+		});
 	});
 });
 
@@ -41,7 +49,6 @@ userRouter.post("/signup", (req, res, next) => {
 			fields.name = {
 				firstName: fields.firstName,
 				lastName: fields.lastName,
-				salutation: fields.salutation,
 			};
 			const user = await User.create(fields);
 			const token = jwt.sign(

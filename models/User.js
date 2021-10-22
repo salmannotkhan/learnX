@@ -18,10 +18,6 @@ const userSchema = new Schema(
 			required: true,
 		},
 		name: {
-			salutation: {
-				type: String,
-				required: true,
-			},
 			firstName: {
 				type: String,
 				required: true,
@@ -51,7 +47,7 @@ const userSchema = new Schema(
 		},
 		approved: Boolean,
 	},
-	schemaOptions,
+	schemaOptions
 );
 
 userSchema.virtual("fullName").get(function () {
