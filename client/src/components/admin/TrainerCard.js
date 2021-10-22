@@ -3,7 +3,7 @@ import UserProfile from "../../images/userprofile.png";
 import { Link } from "react-router-dom";
 function TrainerCard(props) {
 	return (
-		<div className="column is-one-third mt-0 " style={{ marginTop: -30 }}>
+		<div className="column is-one-third">
 			<Link to="panel">
 				<div className="card">
 					<div class="card-content">

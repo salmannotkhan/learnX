@@ -12,6 +12,12 @@ export const isAuthenticated = (req, res, next) => {
 			return res.status(401).json({ error: "Unauthorized" });
 		}
 	} else {
+		console.log("here");
 		return res.status(401).json({ error: "Unauthorized" });
 	}
+};
+
+export const isAdmin = (req, res, next) => {
+	if (req.user) next();
+	return res.status(401).json({ error: "Unauthorized" });
 };
