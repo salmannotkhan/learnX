@@ -1,6 +1,7 @@
 import "../styles/App.css";
 import Register from "./Register";
 import Login from "./Login";
+import Home from "./Home";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AdminPanel from "./admin/AdminPanel";
 import Trainers from "./admin/Trainers";
@@ -50,6 +51,10 @@ const App = () => {
 					<Header />
 					<Subscriptions />
 					<Footer />
+				</Route>
+
+				<Route>
+					<Home />
 				</Route>
 			</Switch>
 		</Router>
