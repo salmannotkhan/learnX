@@ -3,46 +3,28 @@ import UserProfile from "../../images/userprofile.png";
 import { Link } from "react-router-dom";
 function TrainerCard(props) {
 	return (
-		<div className="column is-one-third">
-			<Link to="panel">
-				<div className="card">
-					<div class="card-content">
-						<div class="media">
-							<div class="media">
-								<figure class="image is-96x96">
-									<img
-										src={UserProfile}
-										alt="User Profile"></img>
-								</figure>
-							</div>
-							<div class="media-right">
-								<p
-									className="title is-5 mt-2"
-									style={{
-										color: "#3dcfd3",
-									}}>
-									{props.name}
-								</p>
-								<p
-									className="subtitle is-6 mt-0"
-									style={{
-										color: "#060325",
-									}}>
-									{props.mobile}
-								</p>
-								<p
-									className="subtitle is-6 mt-0"
-									style={{
-										color: "#060325",
-									}}>
-									{props.email}
-								</p>
-							</div>
+		<Link to="panel" className="column is-one-third">
+			<div className="card">
+				<div className="card-content">
+					<div className="media">
+						<div className="media-left">
+							<figure className="image is-96x96">
+								<img src={UserProfile} alt="User Profile"></img>
+							</figure>
+						</div>
+						<div className="media-content has-text-dark">
+							<h4 className="title has-text-dark is-4">
+								{props.name}
+							</h4>
+							<p className="subtitle has-text-dark is-6">
+								<div>{props.mobile}</div>
+								<div>{props.email}</div>
+							</p>
 						</div>
 					</div>
 				</div>
-			</Link>
-		</div>
+			</div>
+		</Link>
 	);
 }
 

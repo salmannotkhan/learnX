@@ -13,51 +13,53 @@ import Subscriptions from "./admin/Subscriptions";
 
 const App = () => {
 	return (
-		<Router>
-			<Switch>
-				<Route path="/register">
-					<Register />
-				</Route>
+		<section className="hero is-fullheight is-primary">
+			<Router>
+				<Switch>
+					<Route path="/register">
+						<Register />
+					</Route>
 
-				<Route path="/login">
-					<Login />
-				</Route>
+					<Route path="/login">
+						<Login />
+					</Route>
 
-				<Route path="/admin/panel">
-					<Header />
-					<AdminPanel />
-					<Footer />
-				</Route>
+					<Route path="/admin/panel">
+						<Header />
+						<AdminPanel />
+						<Footer />
+					</Route>
 
-				<Route path="/admin/trainers">
-					<Header />
-					<Trainers />
-					<Footer />
-				</Route>
+					<Route path="/admin/trainers">
+						<Header />
+						<Trainers />
+						<Footer />
+					</Route>
 
-				<Route path="/admin/trainees">
-					<Header />
-					<Trainees />
-					<Footer />
-				</Route>
+					<Route path="/admin/trainees">
+						<Header />
+						<Trainees />
+						<Footer />
+					</Route>
 
-				<Route path="/admin/videos">
-					<Header />
-					<Videos />
-					<Footer />
-				</Route>
+					<Route path="/admin/videos">
+						<Header />
+						<Videos />
+						<Footer />
+					</Route>
 
-				<Route path="/admin/subscriptions">
-					<Header />
-					<Subscriptions />
-					<Footer />
-				</Route>
+					<Route path="/admin/subscriptions">
+						<Header />
+						<Subscriptions />
+						<Footer />
+					</Route>
 
-				<Route>
-					<Home />
-				</Route>
-			</Switch>
-		</Router>
+					<Route>
+						<Home />
+					</Route>
+				</Switch>
+			</Router>
+		</section>
 	);
 };
 export default App;

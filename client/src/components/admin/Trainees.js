@@ -4,20 +4,25 @@ import { Link } from "react-router-dom";
 
 function Trainees() {
 	const [trainees, setTrainees] = useState([]);
+	const [loading, setLoading] = useState(true);
 	const getTrainees = async () => {
+		setLoading(true);
 		const response = await axios.get("/internal/trainees");
+		setLoading(false);
 		setTrainees(response.data);
 	};
 	useEffect(() => {
 		getTrainees();
 	}, []);
 	return (
-		<section className="hero is-fullheight">
-			<div className="hero-body">
-				<div className="container">
-					<h2 className="title is-2" style={{ textAlign: "center" }}>
-						Trainees List
-					</h2>
+		<div className="hero-body">
+			<div className="container has-text-centered">
+				<h2 className="title is-2">Trainees List</h2>
+				{loading ? (
+					<button className="title button is-1 is-large is-ghost is-loading">
+						Loading
+					</button>
+				) : (
 					<table
 						className="table table is-fullwidth"
 						style={{ borderRadius: 20 }}>
@@ -54,9 +59,9 @@ function Trainees() {
 							))}
 						</tbody>
 					</table>
-				</div>
+				)}
 			</div>
-		</section>
+		</div>
 	);
 }
 

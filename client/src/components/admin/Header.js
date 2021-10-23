@@ -10,27 +10,21 @@ function Header() {
 	};
 	if (logout) return <Redirect to="/login" />;
 	return (
-		<div className="hero-head" style={{ backgroundColor: "#d8cbe9" }}>
+		<div className="hero-head">
 			<header className="navbar">
 				<div className="container">
-					<div className="navbar-brand mt-2">
-						<Link
-							to="/admin/panel"
-							style={{ fontSize: 30, color: "#060325" }}>
-							LearnX
+					<div className="navbar-item navbar-brand">
+						<Link to="/admin/panel" className="is-vcentered">
+							<h4 className="title is-4">LearnX</h4>
 						</Link>
 					</div>
 					<div id="navbarMenuHeroC" className="navbar-menu">
 						<div className="navbar-end">
-							<div className="navbar-item has-dropdown is-hoverable">
-								<span
-									className="navbar-link"
-									style={{ color: "#060325" }}>
+							<div className="navbar-item dropdown is-hoverable">
+								<span className="navbar-link has-text-white dropdown-trigger">
 									Manage
 								</span>
-								<div
-									className="navbar-dropdown"
-									style={{ color: "#060325" }}>
+								<div className="navbar-dropdown has-text-dark">
 									<Link
 										className="navbar-item"
 										to="/admin/trainers">
@@ -57,7 +51,7 @@ function Header() {
 								<div className="buttons">
 									<button
 										onClick={handleLogout}
-										className="button is-primary">
+										className="button is-primary is-inverted">
 										Logout
 									</button>
 								</div>

@@ -9,14 +9,14 @@ export default function Home(props) {
 			<div className="hero-head">
 				<nav className="container navbar">
 					<div className="navbar-brand is-5">
-						<Link className="navbar-item">
+						<Link className="navbar-item" to="/">
 							<h4 className="title is-4">LearnX</h4>
 						</Link>
 					</div>
 					<div className="navbar-end">
 						<div className="navbar-item">
 							<div className="buttons">
-								<Link to="login" class="button is-light">
+								<Link to="login" className="button is-light">
 									Log in
 								</Link>
 								<Link
