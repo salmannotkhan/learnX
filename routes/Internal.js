@@ -5,19 +5,19 @@ import Video from "../models/Video.js";
 
 const internalRouter = Router();
 
-internalRouter.get("/stat", async (req, res) => {
+internalRouter.get("/stat", isAuthenticated, isAdmin, async (req, res) => {
 	const trainers = await User.count({ role: "Trainer" });
 	const trainees = await User.count({ role: "Trainee" });
 	const videos = await Video.count();
 	return res.json({ trainers, trainees, videos });
 });
 
-internalRouter.get("/trainers", async (req, res) => {
+internalRouter.get("/trainers", isAuthenticated, isAdmin, async (req, res) => {
 	const trainers = await User.find({ role: "Trainer" });
 	return res.json(trainers);
 });
 
-internalRouter.get("/trainees", async (req, res) => {
+internalRouter.get("/trainees", isAuthenticated, isAdmin, async (req, res) => {
 	const trainees = await User.find({ role: "Trainee" });
 	return res.json(trainees);
 });

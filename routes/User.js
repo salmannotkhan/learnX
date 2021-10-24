@@ -22,7 +22,7 @@ userRouter.post("/login", async (req, res, next) => {
 					JSON.stringify(user),
 					process.env.JWT_SECRET
 				);
-				res.setHeader("Set-Cookie", `jid=${token}; HttpOnly`);
+				res.cookie("jid", token, { httpOnly: true });
 				return res.json({ success: true, error: null });
 			}
 			return res.json({
@@ -55,7 +55,7 @@ userRouter.post("/signup", (req, res, next) => {
 				JSON.stringify(user),
 				process.env.JWT_SECRET
 			);
-			res.setHeader("Set-Cookie", `jid=${token}; HttpOnly`);
+			res.cookie("jid", token, { httpOnly: true });
 			return res.status(201).json({ success: true, error: null });
 		} catch (err) {
 			next(err);
@@ -63,8 +63,8 @@ userRouter.post("/signup", (req, res, next) => {
 	});
 });
 
-userRouter.get("/logout", isAuthenticated, async (_req, res) => {
-	res.setHeader("Set-Cookie", "jid=; HttpOnly");
+userRouter.get("/logout", async (_req, res) => {
+	res.clearCookie("jid");
 	return res.json({ success: true, error: null });
 });
 
