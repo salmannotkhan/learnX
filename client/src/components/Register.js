@@ -51,9 +51,6 @@ function Register() {
 				<div className="column is-10">
 					<div className="box">
 						<form onSubmit={handleSubmit}>
-							<h3 className="title is-4 has-text-centered">
-								Hello Folks...! Register Here :)
-							</h3>
 							<div className="columns is-vcentered">
 								<div className="column is-8">
 									<figure className="image is-16by9">

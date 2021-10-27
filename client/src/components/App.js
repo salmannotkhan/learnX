@@ -10,7 +10,9 @@ import Footer from "./admin/Footer";
 import Trainees from "./admin/Trainees";
 import Videos from "./admin/Videos";
 import Subscriptions from "./admin/Subscriptions";
-
+import UserHeader from "./user/UserHeader";
+import CoursePage from "./user/CoursePage";
+import UserFooter from "./user/UserFooter";
 const App = () => {
 	return (
 		<section className="hero is-fullheight is-primary">
@@ -52,6 +54,11 @@ const App = () => {
 						<Header />
 						<Subscriptions />
 						<Footer />
+					</Route>
+					<Route path="/user/coursepage">
+						<UserHeader />
+						<CoursePage />
+						<UserFooter />
 					</Route>
 
 					<Route>

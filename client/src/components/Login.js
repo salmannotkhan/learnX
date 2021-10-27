@@ -44,9 +44,6 @@ function Login() {
 					<div className="column is-10">
 						<div className="box">
 							<form onSubmit={handleLogin}>
-								<h3 className="title is-4 has-text-centered">
-									Welcome Back !! Login Here :)
-								</h3>
 								<div className="columns is-vcentered">
 									<div className="column is-8">
 										<figure className="image is-5by3">
