@@ -6,7 +6,6 @@ function CoursePage() {
 	return (
 		<div className="hero-body">
 			<div className="container">
-				<h2 class="title is-2 has-text-centered is-primary">Courses</h2>
 				<div className="columns is-multiline is-mobile">
 					<div className="column is-one-quarter">
 						<input

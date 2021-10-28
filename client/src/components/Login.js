@@ -54,7 +54,10 @@ function Login() {
 									</div>
 									<div className="column">
 										<div className="columns is-vcentered">
-											<div className="column is-narrow">
+											<div className="column ">
+												<h4 class="title is-4 has-text-dark ml-10 has-text-centered">
+													Signin
+												</h4>
 												<div className="field">
 													<label className="label">
 														Email
@@ -88,7 +91,7 @@ function Login() {
 											</div>
 										</div>
 										<div className="columns is-vcentered">
-											<div className="column is-narrow">
+											<div className="column">
 												<div className="field">
 													<label className="label">
 														Password
@@ -143,7 +146,7 @@ function Login() {
 															New User?
 														</strong>
 														<Link
-															className="ml-2"
+															className="ml-2 has-text-link"
 															to="register">
 															Click Here
 														</Link>

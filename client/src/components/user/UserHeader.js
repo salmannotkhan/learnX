@@ -7,7 +7,7 @@ function UserHeader() {
 				<div className="container">
 					<div className="navbar-item navbar-brand">
 						<Link to="/user/coursepage" className="is-vcentered">
-							<h4 className="title is-4 has-text-dark">LearnX</h4>
+							<h4 className="title is-4">LearnX</h4>
 						</Link>
 					</div>
 
@@ -30,14 +30,33 @@ function UserHeader() {
 									<Link className="navbar-item" to="#">
 										Programming
 									</Link>
+									<Link className="navbar-item" to="#">
+										Mobile Application
+									</Link>
+									<Link className="navbar-item" to="#">
+										Cyber Security
+									</Link>
+									<Link className="navbar-item" to="#">
+										Database
+									</Link>
+									<Link className="navbar-item" to="#">
+										Software Development
+									</Link>
 								</div>
 							</div>
-
-							<div className="navbar-item">
-								<div className="buttons">
-									<button className="button is-primary is-warning is-inverted is-light">
+							<div className="navbar-item dropdown is-hoverable">
+								<span className="navbar-link has-text-black dropdown-trigger">
+									My Account
+								</span>
+								<div className="navbar-dropdown has-text-dark">
+									<Link
+										className="navbar-item"
+										to="userprofile">
+										My Profile
+									</Link>
+									<Link className="navbar-item" to="#">
 										Logout
-									</button>
+									</Link>
 								</div>
 							</div>
 						</div>

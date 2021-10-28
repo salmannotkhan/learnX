@@ -13,6 +13,7 @@ import Subscriptions from "./admin/Subscriptions";
 import UserHeader from "./user/UserHeader";
 import CoursePage from "./user/CoursePage";
 import UserFooter from "./user/UserFooter";
+import UserProfile from "./user/UserProfile";
 const App = () => {
 	return (
 		<section className="hero is-fullheight is-primary">
@@ -60,7 +61,11 @@ const App = () => {
 						<CoursePage />
 						<UserFooter />
 					</Route>
-
+					<Route path="/user/userprofile">
+						<UserHeader />
+						<UserProfile />
+						<UserFooter />
+					</Route>
 					<Route>
 						<Home />
 					</Route>
