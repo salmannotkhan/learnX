@@ -1,6 +1,11 @@
 import { Router } from "express";
+import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 import Video from "../models/Video.js";
+import formidable from "formidable";
+import fs from "fs";
 const vidoeRouter = Router();
+
+const s3Client = new S3Client({ region: process.env.AWS_REGION });
 
 vidoeRouter.get("/:videoId", async (req, res) => {
 	try {
@@ -14,9 +19,24 @@ vidoeRouter.get("/:videoId", async (req, res) => {
 	}
 });
 
-vidoeRouter.post("/", (req, res) => {
-	console.log(req.body);
-	res.send("Vidoe add route");
+vidoeRouter.post("/", async (req, res) => {
+	const form = formidable();
+	form.parse(req, async (err, fields, files) => {
+		if (err) {
+			next(err);
+			return;
+		}
+		const fileStream = fs.createReadStream(files.video.path);
+		const uploadParams = {
+			Bucket: process.env.AWS_BUCKET,
+			Key: files.video.name,
+			Body: fileStream,
+			ACL: "public-read",
+		};
+		const data = await s3Client.send(new PutObjectCommand(uploadParams));
+		const url = `https://${process.env.AWS_BUCKET}.s3.amazonaws.com/${files.video.name}`;
+		res.json({ fields, files, url });
+	});
 });
 
 vidoeRouter.delete("/:videoId", async (req, res) => {
