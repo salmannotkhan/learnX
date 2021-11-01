@@ -22,7 +22,8 @@
 		"jsonwebtoken": "^8.5.1",
 		"mongoose": "^6.0.7",
 		"react": "^16.14.0",
-		"react-dom": "^16.14.0"
+		"react-dom": "^16.14.0",
+		"stripe": "^8.184.0"
 	},
 	"devDependencies": {
 		"concurrently": "^6.2.1",

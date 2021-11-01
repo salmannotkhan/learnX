@@ -33,11 +33,10 @@ const userSchema = new Schema(
 			},
 			plan: {
 				type: String,
-				enum: ["Gold", "Silver", "Bronze"],
+				enum: ["Monthly", "Tri-Monthly", "Yearly"],
 			},
-			startDate: {
-				type: Date,
-			},
+			startDate: Date,
+			endDate: Date,
 		},
 		phoneNumber: Number,
 		role: {

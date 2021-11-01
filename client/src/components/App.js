@@ -14,6 +14,8 @@ import UserHeader from "./user/UserHeader";
 import CoursePage from "./user/CoursePage";
 import UserFooter from "./user/UserFooter";
 import UserProfile from "./user/UserProfile";
+import Plan from "./user/Plan";
+
 const App = () => {
 	return (
 		<section className="hero is-fullheight is-primary">
@@ -64,6 +66,11 @@ const App = () => {
 					<Route path="/user/userprofile">
 						<UserHeader />
 						<UserProfile />
+						<UserFooter />
+					</Route>
+					<Route path="/user/plan">
+						<UserHeader />
+						<Plan />
 						<UserFooter />
 					</Route>
 					<Route>
