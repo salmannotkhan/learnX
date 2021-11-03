@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
-import loginimg from "../images/1.png";
+import loginimg from "images/1.png";
 import axios from "axios";
 import "bulma/css/bulma.min.css";
 

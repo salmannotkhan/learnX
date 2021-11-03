@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import RegisterUser from "../images/RegisterUser.png";
+import RegisterUser from "images/RegisterUser.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
 

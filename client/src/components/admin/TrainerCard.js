@@ -1,5 +1,5 @@
 import React from "react";
-import UserProfile from "../../images/userprofile.png";
+import UserProfile from "images/userprofile.png";
 import { Link } from "react-router-dom";
 function TrainerCard(props) {
 	return (

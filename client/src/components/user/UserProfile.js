@@ -1,5 +1,5 @@
 import React from "react";
-import EditProfile from "../../images/UserProfile.svg";
+import EditProfile from "images/UserProfile.svg";
 // import { Link } from "react-router-dom";
 function UserProfile() {
 	return (

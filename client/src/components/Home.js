@@ -1,7 +1,7 @@
 import React from "react";
 import "react-dom";
 import { Link } from "react-router-dom";
-import userLogin from "../images/UserLogin.jpeg";
+import userLogin from "images/UserLogin.jpeg";
 
 export default function Home(props) {
 	return (
