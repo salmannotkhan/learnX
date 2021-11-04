@@ -15,6 +15,7 @@ import CoursePage from "./user/CoursePage";
 import UserFooter from "./user/UserFooter";
 import UserProfile from "./user/UserProfile";
 import Plan from "./user/Plan";
+import UploadVideo from "./user/UploadVideo";
 
 const App = () => {
 	return (
@@ -71,6 +72,11 @@ const App = () => {
 					<Route path="/user/plan">
 						<UserHeader />
 						<Plan />
+						<UserFooter />
+					</Route>
+					<Route path="/user/video">
+						<UserHeader />
+						<UploadVideo />
 						<UserFooter />
 					</Route>
 					<Route>

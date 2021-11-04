@@ -2,6 +2,7 @@ import { Router } from "express";
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 import Video from "../models/Video.js";
 import formidable from "formidable";
+import { isAuthenticated } from "../middlewares/auth.js";
 import fs from "fs";
 const vidoeRouter = Router();
 
@@ -19,7 +20,7 @@ vidoeRouter.get("/:videoId", async (req, res) => {
 	}
 });
 
-vidoeRouter.post("/", async (req, res) => {
+vidoeRouter.post("/", isAuthenticated, async (req, res, next) => {
 	const form = formidable();
 	form.parse(req, async (err, fields, files) => {
 		if (err) {
@@ -35,7 +36,15 @@ vidoeRouter.post("/", async (req, res) => {
 		};
 		const data = await s3Client.send(new PutObjectCommand(uploadParams));
 		const url = `https://${process.env.AWS_BUCKET}.s3.amazonaws.com/${files.video.name}`;
-		res.json({ fields, files, url });
+		const video = await Video.create({
+			title: fields.title,
+			category: fields.category,
+			tags: fields.tags.split(" "),
+			videoUrl: url,
+			audioLanguage: fields.audioLanguage,
+			uploadedBy: req.user._id,
+		});
+		res.json(video);
 	});
 });
 
