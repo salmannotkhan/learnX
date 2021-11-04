@@ -1,5 +1,5 @@
 {
-	"name": "mini",
+	"name": "learnx-server",
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.js",
@@ -7,7 +7,7 @@
 	"private": "true",
 	"scripts": {
 		"start": "nodemon index.js",
-		"dev": "concurrently \"npm run start\" \"cd client && npm start\""
+		"dev": "concurrently \"npm run start\" \"cd ../client && npm start\""
 	},
 	"keywords": [],
 	"author": "",

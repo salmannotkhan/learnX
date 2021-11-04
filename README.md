@@ -1,6 +1,6 @@
 # Mini Project
 
-## Structure
+## Server Structure
 
 index.js: Server (Express)  
 models: Database Schemas (Mongoose)  
