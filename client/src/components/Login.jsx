@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import loginimg from "images/1.png";
 import axios from "axios";
 import "bulma/css/bulma.min.css";
 
 function Login() {
+	const navigate = useNavigate();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [emailError, setEmailError] = useState("");
 	const [passwordError, setPasswordError] = useState("");
-	const [success, setSuccess] = useState(false);
 	const [loading, setLoading] = useState(false);
 
 	const handleLogin = async (e) => {
@@ -29,13 +29,12 @@ function Login() {
 					break;
 				default:
 			}
+		} else {
+			navigate("/admin/panel");
 		}
-		setSuccess(response.data.success);
 		setLoading(false);
 		console.log(response);
 	};
-
-	if (success) return <Redirect to="/admin/panel" />;
 
 	return (
 		<div className="hero-body">
@@ -55,7 +54,7 @@ function Login() {
 									<div className="column">
 										<div className="columns is-vcentered">
 											<div className="column ">
-												<h4 class="title is-4 has-text-dark ml-10 has-text-centered">
+												<h4 className="title is-4 has-text-dark ml-10 has-text-centered">
 													Signin
 												</h4>
 												<div className="field">
@@ -147,7 +146,7 @@ function Login() {
 														</strong>
 														<Link
 															className="ml-2 has-text-link"
-															to="register">
+															to="/register">
 															Click Here
 														</Link>
 													</p>

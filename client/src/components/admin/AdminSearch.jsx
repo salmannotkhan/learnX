@@ -10,7 +10,7 @@ export default function AdminSearch({ data, setFiltered }) {
 			(trainee) => trainee[criteria].toString().search(query) !== -1
 		);
 		setFiltered(filtered);
-	}, [data, query, criteria]);
+	}, [data, query, criteria, setFiltered]);
 	return (
 		<div className="columns">
 			<div className="column field is-half is-offset-3 is-horizontal">

@@ -254,7 +254,7 @@ function Register() {
 													</strong>
 													<Link
 														className="has-text-link"
-														to="login"
+														to="/login"
 														style={{
 															margin: 5,
 														}}>

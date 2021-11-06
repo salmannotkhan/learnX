@@ -2,7 +2,7 @@ import "styles/App.css";
 import Register from "./Register";
 import Login from "./Login";
 import Home from "./Home";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AdminPanel from "./admin/AdminPanel";
 import Trainers from "./admin/Trainers";
 import Header from "./admin/Header";
@@ -12,7 +12,6 @@ import Videos from "./admin/Videos";
 import Subscriptions from "./admin/Subscriptions";
 import UserHeader from "./user/UserHeader";
 import CoursePage from "./user/CoursePage";
-import UserFooter from "./user/UserFooter";
 import UserProfile from "./user/UserProfile";
 import Plan from "./user/Plan";
 import UploadVideo from "./user/UploadVideo";
@@ -20,70 +19,36 @@ import UploadVideo from "./user/UploadVideo";
 const App = () => {
 	return (
 		<section className="hero is-fullheight is-primary">
-			<Router>
-				<Switch>
-					<Route path="/register">
-						<Register />
-					</Route>
+			<BrowserRouter>
+				<Routes>
+					<Route path="/">
+						<Route index element={<Home />} />
+						<Route path="register" element={<Register />} />
 
-					<Route path="/login">
-						<Login />
-					</Route>
+						<Route path="login" element={<Login />} />
 
-					<Route path="/admin/panel">
-						<Header />
-						<AdminPanel />
-						<Footer />
-					</Route>
+						<Route path="admin" element={<Header />}>
+							<Route index element={<AdminPanel />} />
+							<Route path="trainers" element={<Trainers />} />
+							<Route path="trainees" element={<Trainees />} />
+							<Route path="videos" element={<Videos />} />
+							<Route
+								path="subscriptions"
+								element={<Subscriptions />}
+							/>
+						</Route>
 
-					<Route path="/admin/trainers">
-						<Header />
-						<Trainers />
-						<Footer />
+						<Route path="user" element={<UserHeader />}>
+							<Route path="course" element={<CoursePage />} />
+							<Route path="profile" element={<UserProfile />} />
+							<Route path="plan" element={<Plan />} />
+							<Route path="video" element={<UploadVideo />} />
+						</Route>
+						<Route path="*" element={<div>Not found</div>} />
 					</Route>
-
-					<Route path="/admin/trainees">
-						<Header />
-						<Trainees />
-						<Footer />
-					</Route>
-
-					<Route path="/admin/videos">
-						<Header />
-						<Videos />
-						<Footer />
-					</Route>
-
-					<Route path="/admin/subscriptions">
-						<Header />
-						<Subscriptions />
-						<Footer />
-					</Route>
-					<Route path="/user/coursepage">
-						<UserHeader />
-						<CoursePage />
-						<UserFooter />
-					</Route>
-					<Route path="/user/userprofile">
-						<UserHeader />
-						<UserProfile />
-						<UserFooter />
-					</Route>
-					<Route path="/user/plan">
-						<UserHeader />
-						<Plan />
-						<UserFooter />
-					</Route>
-					<Route path="/user/video">
-						<UserHeader />
-						<UploadVideo />
-						<UserFooter />
-					</Route>
-					<Route>
-						<Home />
-					</Route>
-				</Switch>
-			</Router>
+				</Routes>
+			</BrowserRouter>
+			<Footer />
 		</section>
 	);
 };
