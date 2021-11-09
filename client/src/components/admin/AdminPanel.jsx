@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Trainer from "../../images/Trainers.png";
 import Trainee from "../../images/Trainee.jpg";
 import Videos from "../../images/Videos.jpeg";
-import Subscriptions from "../../images/Subscription.jpg";
+import Subscriptions from "images/Subscription.jpg";
 import { Link } from "react-router-dom";
 import axios from "axios";
 

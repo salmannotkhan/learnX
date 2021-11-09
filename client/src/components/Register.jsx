@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import RegisterUser from "../images/RegisterUser.png";
+import RegisterUser from "images/RegisterUser.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
@@ -46,7 +46,7 @@ function Register() {
 	};
 
 	return (
-		<div className="hero is-fullheight">
+		<>
 			<div className="hero-head">
 				<nav className="container navbar">
 					<div className="navbar-brand is-5">
@@ -264,6 +264,7 @@ function Register() {
 												</div>
 											</div>
 										</div>
+
 										<div className="columns">
 											<div className="column is-12">
 												<div className="field is-grouped">
@@ -287,7 +288,7 @@ function Register() {
 														</strong>
 														<Link
 															className="has-text-link"
-															to="login"
+															to="/login"
 															style={{
 																margin: 5,
 															}}>
@@ -309,7 +310,7 @@ function Register() {
 					&copy; Copyright 2021 LearnX
 				</div>
 			</div>
-		</div>
+		</>
 	);
 }
 export default Register;

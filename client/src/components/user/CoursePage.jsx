@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 // import CourseCard from "../user/CourseCard";
-import ReactLogo from "../../images/ReactLogo.png";
+import ReactLogo from "images/ReactLogo.png";
 function CoursePage() {
 	return (
 		<div className="hero-body">

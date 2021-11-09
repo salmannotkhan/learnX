@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { Link, Redirect } from "react-router-dom";
-import loginimg from "../images/1.png";
+import { Link, useNavigate } from "react-router-dom";
+import loginimg from "images/1.png";
 import axios from "axios";
 import "bulma/css/bulma.min.css";
 
 function Login() {
+	const navigate = useNavigate();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [emailError, setEmailError] = useState("");
 	const [passwordError, setPasswordError] = useState("");
-	const [success, setSuccess] = useState(false);
 	const [loading, setLoading] = useState(false);
 
 	const handleLogin = async (e) => {
@@ -29,16 +29,15 @@ function Login() {
 					break;
 				default:
 			}
+		} else {
+			navigate("/admin/panel");
 		}
-		setSuccess(response.data.success);
 		setLoading(false);
 		console.log(response);
 	};
 
-	if (success) return <Redirect to="/admin/panel" />;
-
 	return (
-		<div className="hero is-fullheight">
+		<>
 			<div className="hero-head">
 				<nav className="container navbar">
 					<div className="navbar-brand is-5">
@@ -151,6 +150,7 @@ function Login() {
 													</div>
 												</div>
 											</div>
+
 											<div className="columns is-vcentered has-text-vcentered is-centered">
 												<div className="column is-12">
 													<div className="field is-grouped">
@@ -174,7 +174,7 @@ function Login() {
 															</strong>
 															<Link
 																className="ml-2 has-text-link"
-																to="register">
+																to="/register">
 																Click Here
 															</Link>
 														</p>
@@ -189,12 +189,7 @@ function Login() {
 					</div>
 				</div>
 			</div>
-			<div className="hero-foot">
-				<div className="container has-text-dark has-text-centered">
-					&copy; Copyright 2021 LearnX
-				</div>
-			</div>
-		</div>
+		</>
 	);
 }
 export default Login;
