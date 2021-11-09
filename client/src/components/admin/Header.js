@@ -15,7 +15,7 @@ function Header() {
 				<div className="container">
 					<div className="navbar-item navbar-brand">
 						<Link to="/admin/panel" className="is-vcentered">
-							<h4 className="title is-4">LearnX</h4>
+							<h3 className="title is-3">LearnX</h3>
 						</Link>
 					</div>
 					<div id="navbarMenuHeroC" className="navbar-menu">

@@ -9,62 +9,33 @@ function CoursePage() {
 				<div className="columns is-multiline is-mobile">
 					<div className="column is-one-quarter">
 						<input
-							class="input is-small is-rounded"
+							class="input is-rounded"
 							type="text"
 							placeholder="Search for anything..."
 							name="searchbar"
 						/>
 					</div>
 					<div className="column is-three-quarters">
-						<Link
-							to="#"
-							class="button is-small is-warning is-rounded mr-2">
+						<Link to="#" class="button is-warning is-rounded mr-2">
 							JavaScript
 						</Link>
-						<Link
-							to="#"
-							class="button is-small is-warning is-rounded  mr-2">
+						<Link to="#" class="button is-warning is-rounded  mr-2">
 							React
 						</Link>
-						<Link
-							to="#"
-							class="button is-small is-warning is-rounded  mr-2">
+						<Link to="#" class="button is-warning is-rounded  mr-2">
 							Java
 						</Link>
-						<Link
-							to="#"
-							class="button is-small is-warning is-rounded  mr-2">
+						<Link to="#" class="button is-warning is-rounded  mr-2">
 							Data Science
 						</Link>
-						<Link
-							to="#"
-							class="button is-small is-warning is-rounded  mr-2">
+						<Link to="#" class="button is-warning is-rounded  mr-2">
 							Angular
 						</Link>
-						<Link
-							to="#"
-							class="button is-small is-warning is-rounded  mr-2">
+						<Link to="#" class="button is-warning is-rounded  mr-2">
 							Android
 						</Link>
-						<Link
-							to="#"
-							class="button is-small is-warning is-rounded  mr-2">
+						<Link to="#" class="button is-warning is-rounded  mr-2">
 							Python
-						</Link>
-						<Link
-							to="#"
-							class="button is-small is-warning is-rounded  mr-2">
-							HTML5
-						</Link>
-						<Link
-							to="#"
-							class="button is-small is-warning is-rounded  mr-2">
-							SCSS
-						</Link>
-						<Link
-							to="#"
-							class="button is-small is-warning is-rounded  mr-2">
-							C++
 						</Link>
 					</div>
 				</div>
