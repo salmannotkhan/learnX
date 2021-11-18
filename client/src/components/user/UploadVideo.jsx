@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useReducer } from "react";
+import UploadVideoImage from "images/UploadVideo.jpg";
 
 const reducer = (state, action) => {
 	const { name, value } = action;
@@ -27,54 +28,208 @@ function UploadVideo() {
 		axios.post("/video", payload).then((data) => console.log(data));
 	};
 	return (
-		<div className="App" style={{ width: 300 }}>
-			<form onSubmit={handleSubmit} encType="multipart/form-data">
-				Title:{" "}
-				<input
-					type="text"
-					name="title"
-					value={state.title}
-					onChange={({ target }) => dispatch(target)}
-				/>
-				<br />
-				Category:
-				<select
-					name="category"
-					onChange={({ target }) => dispatch(target)}>
-					<option value="python">python</option>
-					<option value="cpp">cpp</option>
-					<option value="java">java</option>
-					<option value="ruby">ruby</option>
-					<option value="golang">golang</option>
-				</select>
-				<br />
-				Audio Lang:
-				<input
-					type="radio"
-					name="audioLanguage"
-					value="English"
-					onClick={({ target }) => dispatch(target)}
-				/>
-				English
-				<input
-					type="radio"
-					name="audioLanguage"
-					value="Hindi"
-					onClick={({ target }) => dispatch(target)}
-				/>
-				Hindi <br />
-				Tags:
-				<input
-					type="text"
-					name="tags"
-					value={state.tags}
-					onChange={({ target }) => dispatch(target)}
-				/>
-				<input type="file" name="video" onChange={console.log} />
-				<br />
-				<button type="submit">Upload</button>
-			</form>
-		</div>
+		<>
+			<div className="App">
+				<div className="hero-body">
+					<div className="columns is-centered">
+						<div className="column is-11">
+							<div className="box">
+								<form
+									onSubmit={handleSubmit}
+									encType="multipart/form-data">
+									<div className="columns is-vcentered">
+										<div className="column is-6">
+											<figure className="image is-4by3">
+												<img
+													src={UploadVideoImage}
+													alt="Upload Video banner"
+												/>
+											</figure>
+										</div>
+										<div className="column">
+											<h3 class="title is-4 has-text-dark ml-10 has-text-centered">
+												Add Video
+											</h3>
+											<div className="columns is-multiline is-mobile">
+												<div className="column is-two-fifths">
+													<div className="field">
+														<label className="label">
+															Title:{" "}
+														</label>
+														<div className="control">
+															<input
+																className="input"
+																placeholder="Video Title"
+																type="text"
+																name="title"
+																value={
+																	state.title
+																}
+																onChange={({
+																	target,
+																}) =>
+																	dispatch(
+																		target
+																	)
+																}
+															/>
+														</div>
+													</div>
+												</div>
+												<div className="column is-one-quarter">
+													<div className="field">
+														<label className="label">
+															Category
+														</label>
+
+														<div
+															className="select"
+															name="category"
+															onChange={({
+																target,
+															}) =>
+																dispatch(target)
+															}>
+															<select>
+																<option value="python">
+																	Python
+																</option>
+																<option value="cpp">
+																	C++
+																</option>
+																<option value="java">
+																	Java
+																</option>
+																<option value="ruby">
+																	React
+																</option>
+																<option value="golang">
+																	Node
+																</option>
+															</select>
+														</div>
+													</div>
+												</div>
+
+												<div className="column is-one-third">
+													<div className="field">
+														<label className="label">
+															Audio
+														</label>
+														<div className="control mt-4">
+															<label class="radio">
+																<input
+																	type="radio"
+																	name="audioLanguage"
+																	value="English"
+																	onClick={({
+																		target,
+																	}) =>
+																		dispatch(
+																			target
+																		)
+																	}
+																/>
+																English
+															</label>
+
+															<label class="radio">
+																<input
+																	type="radio"
+																	name="audioLanguage"
+																	value="Hindi"
+																	onClick={({
+																		target,
+																	}) =>
+																		dispatch(
+																			target
+																		)
+																	}
+																/>
+																Hindi
+															</label>
+														</div>
+													</div>
+												</div>
+												<div className="column is-half">
+													<div className="field">
+														<label className="label">
+															Tags
+														</label>
+														<div className="control">
+															<input
+																className="input"
+																type="text"
+																name="tags"
+																placeholder="Tags"
+																value={
+																	state.tags
+																}
+																onChange={({
+																	target,
+																}) =>
+																	dispatch(
+																		target
+																	)
+																}
+															/>
+														</div>
+													</div>
+												</div>
+
+												<div className="column">
+													<div className="field">
+														<label className="label">
+															Add File
+														</label>
+														<div className="control">
+															<div class="file">
+																<label class="file-label">
+																	<input
+																		class="file-input"
+																		type="file"
+																		name="resume"
+																		onChange={
+																			console.log
+																		}
+																	/>
+																	<span class="file-cta">
+																		<span class="file-label">
+																			Choose
+																			a
+																			file…
+																		</span>
+																	</span>
+																</label>
+															</div>
+														</div>
+													</div>
+												</div>
+
+												<div className="column is-half">
+													<div className="field">
+														<p className="control">
+															<button
+																type="submit"
+																className="button is-primary "
+																style={{
+																	color: "#112031",
+																}}>
+																Upload Video
+															</button>
+														</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</>
 	);
 }
 

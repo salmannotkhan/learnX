@@ -79,7 +79,7 @@ function Login() {
 										</div>
 										<div className="column">
 											<div className="columns is-vcentered">
-												<div className="column ">
+												<div className="column">
 													<h4 class="title is-4 has-text-dark has-text-centered">
 														Signin
 													</h4>
