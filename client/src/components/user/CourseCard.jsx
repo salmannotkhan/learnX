@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-function Courses(props) {
+import ReactLogo from "images/ReactLogo.png";
+function Courses({ video }) {
 	return (
-		<Link to="panel" className="column is-one-third">
-			<div className="card mt-5">
+		<Link to={video._id} className="column is-one-quarter">
+			<div className="card has-rounded-corner mt-5">
 				<div className="card-image">
 					<figure className="image is-2by1">
 						<img src={ReactLogo} alt="Course Logo" />
@@ -12,29 +13,21 @@ function Courses(props) {
 				<div className="card-content">
 					<div className="media">
 						<div className="media-content">
-							<p className="title is-6 has-text-dark">
-								ReactJs in 30 Days
+							<span class="tag is-warning mb-2">
+								{video.isPremium ? "&#x2605; Pro" : ""}
+							</span>
+							<p className="title is-6 has-text-dark mt-3">
+								{video.title}
 							</p>
 						</div>
-
-						<div className="media-right">
-							<p className="title is-6 has-text-dark">
-								4&#x2605;
-							</p>
-						</div>
+						<div className="media-right"></div>
 					</div>
 					<div className="content">
-						<p className="subtitle is-7 has-text-dark mt-1">
-							Our Exclusive course by Prof. John Smith
+						<p className="subtitle is-7 has-text-dark">
+							{video.uploadedBy}
 						</p>
-						<p className="subtitle is-6 has-text-dark">₹1455</p>
 					</div>
 				</div>
-				<footer className="card-footer">
-					<Link to="#" className="card-footer-item">
-						Add to Cart
-					</Link>
-				</footer>
 			</div>
 		</Link>
 	);

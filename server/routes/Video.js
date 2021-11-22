@@ -56,10 +56,13 @@ vidoeRouter.delete("/:videoId", async (req, res) => {
 	res.send("Vidoe delete route " + req.params.videoId);
 });
 
-vidoeRouter.get("/", async (req, res) => {
-	console.log(req.body);
-	const videos = await Video.find();
-	res.send(videos);
+vidoeRouter.get("/", isAuthenticated, async (req, res) => {
+	if (req.user.subscription) {
+		const videos = await Video.find();
+		return res.send(videos);
+	}
+	const videos = await Video.find({ isPremium: false });
+	return res.send(videos);
 });
 
 export default vidoeRouter;

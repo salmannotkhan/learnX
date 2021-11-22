@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-// import CourseCard from "../user/CourseCard";
-import ReactLogo from "images/ReactLogo.png";
+import CourseCard from "../user/CourseCard";
+import axios from "axios";
+
 function CoursePage() {
+	const [videos, setVideos] = useState([]);
+	const getVideos = async () => {
+		const response = await axios.get("/video");
+		setVideos(response.data);
+		console.log(response);
+	};
+	useEffect(() => {
+		getVideos();
+	}, []);
 	return (
 		<div className="hero-body">
 			<div className="container">
@@ -40,33 +50,9 @@ function CoursePage() {
 					</div>
 				</div>
 				<div className="columns is-multiline is-mobile">
-					<div className="column is-one-quarter">
-						<div className="card has-rounded-corner mt-5">
-							<div className="card-image">
-								<figure className="image is-2by1">
-									<img src={ReactLogo} alt="Course Logo" />
-								</figure>
-							</div>
-							<div className="card-content">
-								<div className="media">
-									<div className="media-content">
-										<span class="tag is-warning mb-2">
-											&#x2605; Pro
-										</span>
-										<p className="title is-6 has-text-dark mt-3">
-											ReactJs in 30 Days
-										</p>
-									</div>
-									<div className="media-right"></div>
-								</div>
-								<div className="content">
-									<p className="subtitle is-7 has-text-dark">
-										Our Exclusive course by Prof. John Smith
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
+					{videos.map((video) => (
+						<CourseCard video={video} />
+					))}
 				</div>
 			</div>
 		</div>
