@@ -15,6 +15,7 @@ import CoursePage from "./user/CoursePage";
 import UserProfile from "./user/UserProfile";
 import Plan from "./user/Plan";
 import UploadVideo from "./user/UploadVideo";
+import VideoStream from "./user/VideoStream";
 
 const App = () => {
 	return (
@@ -40,6 +41,10 @@ const App = () => {
 
 						<Route path="user" element={<UserHeader />}>
 							<Route path="course" element={<CoursePage />} />
+							<Route
+								path="course/:videoId"
+								element={<VideoStream />}
+							/>
 							<Route path="profile" element={<UserProfile />} />
 							<Route path="plan" element={<Plan />} />
 							<Route path="video" element={<UploadVideo />} />

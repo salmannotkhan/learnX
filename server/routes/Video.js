@@ -56,7 +56,7 @@ vidoeRouter.delete("/:videoId", async (req, res) => {
 	res.send("Vidoe delete route " + req.params.videoId);
 });
 
-vidoeRouter.get("/", isAuthenticated, async (req, res) => {
+vidoeRouter.post("/explore", isAuthenticated, async (req, res) => {
 	if (req.user.subscription) {
 		const videos = await Video.find();
 		return res.send(videos);

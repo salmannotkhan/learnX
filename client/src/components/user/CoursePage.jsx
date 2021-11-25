@@ -5,14 +5,15 @@ import axios from "axios";
 
 function CoursePage() {
 	const [videos, setVideos] = useState([]);
-	const getVideos = async () => {
-		const response = await axios.get("/video");
+	const [filters, setFilters] = useState({});
+	const getVideos = async (filters = {}) => {
+		const response = await axios.post("/video/explore", filters);
 		setVideos(response.data);
 		console.log(response);
 	};
 	useEffect(() => {
-		getVideos();
-	}, []);
+		getVideos(filters);
+	}, [filters]);
 	return (
 		<div className="hero-body">
 			<div className="container">
@@ -21,7 +22,11 @@ function CoursePage() {
 						<input
 							class="input is-rounded"
 							type="text"
-							placeholder="Search for anything..."
+							value={filters.title}
+							placeholder="Search for Videos"
+							onChange={(e) =>
+								setFilters({ title: e.target.value })
+							}
 							name="searchbar"
 						/>
 					</div>
