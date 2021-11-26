@@ -13,7 +13,7 @@ function Courses({ video }) {
 				<div className="card-content">
 					<div className="media">
 						<div className="media-content">
-							<span class="tag is-warning mb-2">
+							<span className="tag is-warning mb-2">
 								{video.isPremium ? "&#x2605; Pro" : ""}
 							</span>
 							<p className="title is-6 has-text-dark mt-3">

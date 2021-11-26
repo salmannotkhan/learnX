@@ -1,26 +1,89 @@
 import { Router } from "express";
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 import Video from "../models/Video.js";
+import bodyParser from "body-parser";
 import formidable from "formidable";
 import { isAuthenticated } from "../middlewares/auth.js";
 import fs from "fs";
-const vidoeRouter = Router();
+const videoRouter = Router();
 
+const jsonParser = bodyParser.json();
 const s3Client = new S3Client({ region: process.env.AWS_REGION });
 
-vidoeRouter.get("/:videoId", async (req, res) => {
+videoRouter.get("/:videoId", isAuthenticated, async (req, res) => {
 	try {
 		const video = await Video.findById(req.params.videoId);
-		if (video) {
-			res.send(video);
+		if (!video) {
+			return res.status(404).send({ error: "Video not found" });
 		}
-		res.send({ error: "Video not found" });
-	} catch {
-		res.send({ error: "Video not found" });
+		if (
+			video.uploadedBy.toString() !== req.user._id &&
+			!JSON.stringify(video.views).includes(req.user._id)
+		) {
+			video.views.push({ user: req.user._id });
+			video.save();
+		}
+		return res.send(video);
+	} catch (err) {
+		console.log(err);
+		return res.send({ error: "Video not found" });
 	}
 });
 
-vidoeRouter.post("/", isAuthenticated, async (req, res, next) => {
+videoRouter.post(
+	"/interaction",
+	isAuthenticated,
+	jsonParser,
+	async (req, res) => {
+		try {
+			const video = await Video.findById(req.body.videoId);
+			if (!video) {
+				return res.status(404).send({ error: "Invalid video ID" });
+			}
+			if (video.uploadedBy.toString() === req.user._id) {
+				return res.send({
+					status: "Failed",
+					error: "Uploader can't interect with video",
+				});
+			}
+			switch (req.body.type) {
+				case "like":
+					if (JSON.stringify(video.likes).includes(req.user._id)) {
+						video.likes = video.likes.filter(
+							(like) => like.user.toString() !== req.user._id
+						);
+					} else {
+						video.dislikes = video.dislikes.filter(
+							(dislike) =>
+								dislike.user.toString() !== req.user._id
+						);
+						video.likes.push({ user: req.user._id });
+					}
+					break;
+				case "dislike":
+					if (JSON.stringify(video.dislikes).includes(req.user._id)) {
+						video.dislikes = video.dislikes.filter(
+							(dislike) =>
+								dislike.user.toString() !== req.user._id
+						);
+					} else {
+						video.likes = video.likes.filter(
+							(like) => like.user.toString() !== req.user._id
+						);
+						video.dislikes.push({ user: req.user._id });
+					}
+					break;
+			}
+			video.save();
+			return res.send({ status: "OK" });
+		} catch (err) {
+			console.log(err);
+			return res.send({ error: "Video not found" });
+		}
+	}
+);
+
+videoRouter.post("/", isAuthenticated, async (req, res, next) => {
 	const form = formidable();
 	form.parse(req, async (err, fields, files) => {
 		if (err) {
@@ -48,7 +111,7 @@ vidoeRouter.post("/", isAuthenticated, async (req, res, next) => {
 	});
 });
 
-vidoeRouter.delete("/:videoId", async (req, res) => {
+videoRouter.delete("/:videoId", async (req, res) => {
 	const video = await Video.findByIdAndDelete(req.params.videoId);
 	if (video) {
 		console.log(video);
@@ -56,7 +119,7 @@ vidoeRouter.delete("/:videoId", async (req, res) => {
 	res.send("Vidoe delete route " + req.params.videoId);
 });
 
-vidoeRouter.post("/explore", isAuthenticated, async (req, res) => {
+videoRouter.post("/explore", isAuthenticated, async (req, res) => {
 	if (req.user.subscription) {
 		const videos = await Video.find();
 		return res.send(videos);
@@ -65,4 +128,4 @@ vidoeRouter.post("/explore", isAuthenticated, async (req, res) => {
 	return res.send(videos);
 });
 
-export default vidoeRouter;
+export default videoRouter;

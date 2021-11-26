@@ -47,7 +47,7 @@ function UploadVideo() {
 											</figure>
 										</div>
 										<div className="column">
-											<h3 class="title is-4 has-text-dark ml-10 has-text-centered">
+											<h3 className="title is-4 has-text-dark ml-10 has-text-centered">
 												Add Video
 											</h3>
 											<div className="columns is-multiline is-mobile">
@@ -82,15 +82,16 @@ function UploadVideo() {
 															Category
 														</label>
 
-														<div
-															className="select"
-															name="category"
-															onChange={({
-																target,
-															}) =>
-																dispatch(target)
-															}>
-															<select>
+														<div className="select">
+															<select
+																name="category"
+																onChange={({
+																	target,
+																}) =>
+																	dispatch(
+																		target
+																	)
+																}>
 																<option value="python">
 																	Python
 																</option>
@@ -117,7 +118,7 @@ function UploadVideo() {
 															Audio
 														</label>
 														<div className="control mt-4">
-															<label class="radio">
+															<label className="radio">
 																<input
 																	type="radio"
 																	name="audioLanguage"
@@ -133,7 +134,7 @@ function UploadVideo() {
 																English
 															</label>
 
-															<label class="radio">
+															<label className="radio">
 																<input
 																	type="radio"
 																	name="audioLanguage"
@@ -183,18 +184,22 @@ function UploadVideo() {
 															Add File
 														</label>
 														<div className="control">
-															<div class="file">
-																<label class="file-label">
+															<div className="file">
+																<label className="file-label">
 																	<input
-																		class="file-input"
+																		className="file-input"
 																		type="file"
-																		name="resume"
-																		onChange={
-																			console.log
+																		name="video"
+																		onChange={({
+																			target,
+																		}) =>
+																			dispatch(
+																				target
+																			)
 																		}
 																	/>
-																	<span class="file-cta">
-																		<span class="file-label">
+																	<span className="file-cta">
+																		<span className="file-label">
 																			Choose
 																			a
 																			file…
