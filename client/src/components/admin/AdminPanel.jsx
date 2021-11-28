@@ -9,8 +9,12 @@ import axios from "axios";
 function AdminPanel() {
 	const [stats, setStats] = useState({ trainers: 0, trainees: 0, vidoes: 0 });
 	const getStats = async () => {
-		const response = await axios.get("/internal/stat");
-		setStats(response.data);
+		try {
+			const response = await axios.get("/internal/stat");
+			setStats(response.data);
+		} catch (e) {
+			console.log(e.message);
+		}
 	};
 	useEffect(() => {
 		getStats();

@@ -87,7 +87,7 @@ function Register() {
 										</figure>
 									</div>
 									<div className="column">
-										<h4 class="title is-4 has-text-centered has-text-dark">
+										<h4 className="title is-4 has-text-centered has-text-dark">
 											Signup
 										</h4>
 

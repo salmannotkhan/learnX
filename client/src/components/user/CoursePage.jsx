@@ -7,9 +7,13 @@ function CoursePage() {
 	const [videos, setVideos] = useState([]);
 	const [filters, setFilters] = useState({});
 	const getVideos = async (filters = {}) => {
-		const response = await axios.post("/video/explore", filters);
-		setVideos(response.data);
-		console.log(response);
+		try {
+			const response = await axios.post("/video/explore", filters);
+			setVideos(response.data);
+			console.log(response);
+		} catch (e) {
+			console.log(e.message);
+		}
 	};
 	useEffect(() => {
 		getVideos(filters);
@@ -20,7 +24,7 @@ function CoursePage() {
 				<div className="columns is-multiline is-mobile">
 					<div className="column is-one-quarter">
 						<input
-							class="input is-rounded"
+							className="input is-rounded"
 							type="text"
 							value={filters.title}
 							placeholder="Search for Videos"
@@ -31,32 +35,46 @@ function CoursePage() {
 						/>
 					</div>
 					<div className="column is-three-quarters">
-						<Link to="#" class="button is-warning is-rounded mr-2">
+						<Link
+							to="#"
+							className="button is-warning is-rounded mr-2">
 							JavaScript
 						</Link>
-						<Link to="#" class="button is-warning is-rounded  mr-2">
+						<Link
+							to="#"
+							className="button is-warning is-rounded  mr-2">
 							React
 						</Link>
-						<Link to="#" class="button is-warning is-rounded  mr-2">
+						<Link
+							to="#"
+							className="button is-warning is-rounded  mr-2">
 							Java
 						</Link>
-						<Link to="#" class="button is-warning is-rounded  mr-2">
+						<Link
+							to="#"
+							className="button is-warning is-rounded  mr-2">
 							Data Science
 						</Link>
-						<Link to="#" class="button is-warning is-rounded  mr-2">
+						<Link
+							to="#"
+							className="button is-warning is-rounded  mr-2">
 							Angular
 						</Link>
-						<Link to="#" class="button is-warning is-rounded  mr-2">
+						<Link
+							to="#"
+							className="button is-warning is-rounded  mr-2">
 							Android
 						</Link>
-						<Link to="#" class="button is-warning is-rounded  mr-2">
+						<Link
+							to="#"
+							className="button is-warning is-rounded  mr-2">
 							Python
 						</Link>
 					</div>
 				</div>
 				<div className="columns is-multiline is-mobile">
 					{videos.map((video) => (
-						<CourseCard video={video} />
+						<CourseCard key={video._id} video={video} />
 					))}
 				</div>
 			</div>

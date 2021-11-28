@@ -18,7 +18,7 @@ function UserProfile() {
 									</figure>
 								</div>
 								<div className="column">
-									<h3 class="title is-4 has-text-dark ml-10 has-text-centered">
+									<h3 className="title is-4 has-text-dark ml-10 has-text-centered">
 										Edit Profile
 									</h3>
 									<div className="columns is-multiline is-mobile">

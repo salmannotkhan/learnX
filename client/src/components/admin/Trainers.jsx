@@ -47,7 +47,7 @@ function Trainers() {
 							/>
 						))
 					) : (
-						<h4 class="title is-4 mt-3">No Record found</h4>
+						<h4 className="title is-4 mt-3">No Record found</h4>
 					)}
 				</div>
 			</div>
