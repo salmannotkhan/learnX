@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Monthly from "../../images/Monthly.png";
 import Quaterly from "../../images/Quaterly.png";
 import Yearly from "../../images/Yearly.png";
@@ -22,7 +21,7 @@ export default function Plan() {
 								<div className="content">
 									<div className="media-content">
 										<p className="title is-1 has-text-centered has-text-primary mb-3">
-											₹399*
+											₹99
 										</p>
 									</div>
 								</div>
@@ -38,13 +37,21 @@ export default function Plan() {
 									</div>
 								</div>
 							</div>
-							<footer className="card-footer has-background-light">
-								<Link
-									to="#"
+							<form
+								className="card-footer has-background-light"
+								action="/payment/checkout"
+								method="POST">
+								<input
+									type="hidden"
+									name="plan"
+									value="monthly"
+								/>
+								<button
+									style={{ border: 0 }}
 									className="card-footer-item has-text-link-dark">
-									Choose Plan
-								</Link>
-							</footer>
+									Select
+								</button>
+							</form>
 						</div>
 					</div>
 					<div className="column is-one-quarter">
@@ -60,14 +67,14 @@ export default function Plan() {
 								<div className="content">
 									<div className="media-content">
 										<p className="title is-1 has-text-centered has-text-primary mb-3">
-											₹799*
+											₹279
 										</p>
 									</div>
 								</div>
 								<div className="content">
 									<div className="media-content">
 										<p className="title is-4 has-text-centered has-text-dark mb-4">
-											Quaterly
+											Tri-monthly
 										</p>
 										<p className="title is-6  has-text-centered has-text-dark">
 											Get exclusive access of tutorials
@@ -76,13 +83,21 @@ export default function Plan() {
 									</div>
 								</div>
 							</div>
-							<footer className="card-footer has-background-light">
-								<Link
-									to="#"
+							<form
+								className="card-footer has-background-light"
+								action="/payment/checkout"
+								method="POST">
+								<input
+									type="hidden"
+									name="plan"
+									value="tri-monthly"
+								/>
+								<button
+									style={{ border: 0 }}
 									className="card-footer-item has-text-link-dark">
-									Choose Plan
-								</Link>
-							</footer>
+									Select
+								</button>
+							</form>
 						</div>
 					</div>
 					<div className="column is-one-quarter">
@@ -98,7 +113,7 @@ export default function Plan() {
 								<div className="content">
 									<div className="media-content">
 										<p className="title is-1  has-text-centered has-text-primary mb-3">
-											₹1,199*
+											₹1,099
 										</p>
 									</div>
 								</div>
@@ -114,31 +129,25 @@ export default function Plan() {
 									</div>
 								</div>
 							</div>
-							<footer className="card-footer has-background-light">
-								<Link
-									to="#"
+							<form
+								className="card-footer has-background-light"
+								action="/payment/checkout"
+								method="POST">
+								<input
+									type="hidden"
+									name="plan"
+									value="yearly"
+								/>
+								<button
+									style={{ border: 0 }}
 									className="card-footer-item has-text-link-dark">
-									Choose Plan
-								</Link>
-							</footer>
+									Select
+								</button>
+							</form>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		// <div className="hero-body">
-		// 	<form action="/payment/checkout" method="POST">
-		// 		<input type="hidden" name="plan" value="monthly" />
-		// 		<button className="button">Monthly</button>
-		// 	</form>
-		// 	<form action="/payment/checkout" method="POST">
-		// 		<input type="hidden" name="plan" value="tri-monthly" />
-		// 		<button className="button">Tri-monthly</button>
-		// 	</form>
-		// 	<form action="/payment/checkout" method="POST">
-		// 		<input type="hidden" name="plan" value="yearly" />
-		// 		<button className="button">Yearly</button>
-		// 	</form>
-		// </div>
 	);
 }
