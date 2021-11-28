@@ -8,6 +8,8 @@ const reducer = (state, action) => {
 	switch (name) {
 		case "video":
 			return { ...state, video: action.files[0] };
+		case "thumbnail":
+			return { ...state, thumbnail: action.files[0] };
 		case "videoType":
 			if (value === "Live")
 				return { ...state, video: null, [name]: value };
@@ -25,6 +27,7 @@ const initial = {
 	audioLanguage: "",
 	tags: "",
 	video: null,
+	thumbnail: null,
 	premium: false,
 	videoType: "",
 };
@@ -198,18 +201,25 @@ function UploadVideo() {
 									<div className="column is-half">
 										<div className="field">
 											<label className="label">
-												Premium
+												Thumbnail
 											</label>
-											<div className="control">
-												<label className="checkbox mt-4 mb-5">
+											<div className="file is-boxed">
+												<label className="file-label">
 													<input
-														name="premium"
-														onClick={({ target }) =>
-															dispatch(target)
-														}
-														type="checkbox"
-													/>{" "}
-													Video is Premium
+														className="file-input"
+														type="file"
+														name="thumbnail"
+														accept="image/*"
+														onChange={({
+															target,
+														}) => dispatch(target)}
+													/>
+													<span className="file-cta file-name">
+														{state.thumbnail
+															? state.thumbnail
+																	.name
+															: "Choose a file…"}
+													</span>
 												</label>
 											</div>
 										</div>
@@ -245,6 +255,25 @@ function UploadVideo() {
 										</div>
 									) : null}
 
+									<div className="column is-full">
+										<div className="field">
+											<label className="label">
+												Premium
+											</label>
+											<div className="control">
+												<label className="checkbox mt-4 mb-5">
+													<input
+														name="premium"
+														onClick={({ target }) =>
+															dispatch(target)
+														}
+														type="checkbox"
+													/>{" "}
+													Video is Premium
+												</label>
+											</div>
+										</div>
+									</div>
 									<div className="column is-full">
 										<div className="field">
 											<p className="control">

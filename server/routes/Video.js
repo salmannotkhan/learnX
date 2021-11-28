@@ -20,7 +20,7 @@ videoRouter.get("/:videoId", isAuthenticated, async (req, res) => {
 			return res.status(404).send({ error: "Video not found" });
 		}
 		if (
-			video.uploadedBy.toString() !== req.user._id &&
+			video.uploadedBy.toString() !== req.user._id ||
 			!JSON.stringify(video.views).includes(req.user._id)
 		) {
 			video.views.push({ user: req.user._id });
@@ -94,6 +94,15 @@ videoRouter.post("/", isAuthenticated, async (req, res, next) => {
 			return;
 		}
 		var url = "";
+		const thumbStream = fs.createReadStream(files.thumbnail.path);
+		const thumbParams = {
+			Bucket: process.env.AWS_BUCKET,
+			Key: files.thumbnail.name,
+			Body: thumbStream,
+			ACL: "public-read",
+		};
+		await s3Client.send(new PutObjectCommand(thumbParams));
+		const thumbUrl = `https://${process.env.AWS_BUCKET}.s3.amazonaws.com/${files.thumbnail.name}`;
 		if (fields.videoType === "Upload") {
 			const fileStream = fs.createReadStream(files.video.path);
 			const uploadParams = {
@@ -116,6 +125,7 @@ videoRouter.post("/", isAuthenticated, async (req, res, next) => {
 			tags: fields.tags.split(" "),
 			isLive: fields.videoType === "Live",
 			isPremium: fields.premium === "on",
+			thumbnailUrl: thumbUrl,
 			videoUrl: url,
 			audioLanguage: fields.audioLanguage,
 			uploadedBy: req.user._id,
@@ -140,7 +150,10 @@ videoRouter.post("/explore", isAuthenticated, async (req, res) => {
 		});
 		return res.send(videos);
 	}
-	const videos = await Video.find({ isPremium: false });
+	const videos = await Video.find({ isPremium: false }).populate({
+		path: "uploadedBy",
+		select: "name",
+	});
 	return res.send(videos);
 });
 

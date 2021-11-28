@@ -25,6 +25,10 @@ const videoSchema = new Schema(
 			required: true,
 		},
 		tags: [String],
+		thumbnailUrl: {
+			type: String,
+			required: true,
+		},
 		videoUrl: {
 			type: String,
 			required: true,

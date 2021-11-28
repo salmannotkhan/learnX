@@ -13,6 +13,7 @@ export default function VideoStream() {
 		responsive: true,
 		fluid: true,
 		preload: "auto",
+		poster: video ? video.thumbnailUrl : "",
 		sources: [
 			video
 				? {

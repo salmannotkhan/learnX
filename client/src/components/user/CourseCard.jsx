@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ReactLogo from "images/ReactLogo.png";
 function Courses({ video }) {
 	return (
 		<Link to={video._id} className="column is-one-quarter">
@@ -8,13 +7,16 @@ function Courses({ video }) {
 				<div className="card-image">
 					{video.isPremium ? (
 						<span
-							style={{ position: "absolute", zIndex: 1 }}
-							className="tag is-warning mb-2">
+							style={{
+								position: "absolute",
+								zIndex: 1,
+							}}
+							className="tag is-warning">
 							&#x2605; Pro
 						</span>
 					) : null}
 					<figure className="image is-2by1">
-						<img src={ReactLogo} alt="Course Logo" />
+						<img src={video.thumbnailUrl} alt={video.title} />
 					</figure>
 				</div>
 				<div className="card-content">
