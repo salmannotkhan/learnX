@@ -30,7 +30,8 @@ function Courses({ video }) {
 					</div>
 					<div className="content">
 						<p className="subtitle is-7 has-text-dark">
-							{video.uploadedBy}
+							By {video.uploadedBy.name.firstName}{" "}
+							{video.uploadedBy.name.lastName}
 						</p>
 					</div>
 				</div>
