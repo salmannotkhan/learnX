@@ -12,7 +12,10 @@ const s3Client = new S3Client({ region: process.env.AWS_REGION });
 
 videoRouter.get("/:videoId", isAuthenticated, async (req, res) => {
 	try {
-		const video = await Video.findById(req.params.videoId).populate("User");
+		const video = await Video.findById(req.params.videoId).populate({
+			path: "uploadedBy",
+			select: "name email phoneNumber",
+		});
 		if (!video) {
 			return res.status(404).send({ error: "Video not found" });
 		}
@@ -23,7 +26,7 @@ videoRouter.get("/:videoId", isAuthenticated, async (req, res) => {
 			video.views.push({ user: req.user._id });
 			video.save();
 		}
-		return res.send(video);
+		return res.send(video.toJSON());
 	} catch (err) {
 		console.log(err);
 		return res.send({ error: "Video not found" });

@@ -59,8 +59,9 @@ export default function VideoStream() {
 						</div>
 						<div className="row m-4">
 							<h4 className="title is-4">{video.title}</h4>
+							<p className="subtitle">{video.totalViews} views</p>
 							<p className="subtitle">
-								{video.views.length} views
+								{Object.values(video.uploadedBy.name).join(" ")}
 							</p>
 						</div>
 						<div className="row m-4">
@@ -68,12 +69,12 @@ export default function VideoStream() {
 								<button
 									className="button p-5 is-outlined is-inverted is-primary"
 									onClick={() => interect("like")}>
-									{video.likes.length} Like
+									{video.totalLikes} Like
 								</button>
 								<button
 									className="button p-5 is-outlined is-inverted is-primary"
 									onClick={() => interect("dislike")}>
-									{video.dislikes.length} Dislike
+									{video.totalDislikes} Dislike
 								</button>
 							</div>
 						</div>

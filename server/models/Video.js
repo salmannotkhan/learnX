@@ -66,5 +66,16 @@ videoSchema.virtual("totalViews").get(function () {
 	return this.views.length;
 });
 
+videoSchema.methods.toJSON = function () {
+	var obj = this.toObject();
+	obj.totalViews = obj.views.length;
+	obj.totalLikes = obj.likes.length;
+	obj.totalDislikes = obj.dislikes.length;
+	delete obj.views;
+	delete obj.likes;
+	delete obj.dislikes;
+	return obj;
+};
+
 const Video = mongoose.model("Video", videoSchema);
 export default Video;
