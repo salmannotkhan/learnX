@@ -14,7 +14,6 @@ const userSchema = new Schema(
 		},
 		password: {
 			type: [String],
-			// select: false,
 			required: true,
 		},
 		name: {
@@ -49,15 +48,16 @@ const userSchema = new Schema(
 	schemaOptions
 );
 
-userSchema.virtual("fullName").get(function () {
-	return (
-		this.name.salutation +
-		" " +
-		this.name.firstName +
-		" " +
-		this.name.lastName
-	);
-});
+userSchema.methods.verifyPassword = function (password) {
+	const currentPassword = this.password.at(this.password.length - 1);
+	return currentPassword === password;
+};
+
+userSchema.methods.toJSON = function () {
+	var obj = this.toObject();
+	delete obj.password;
+	return obj;
+};
 
 const User = mongoose.model("user", userSchema);
 export default User;

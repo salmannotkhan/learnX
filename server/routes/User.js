@@ -17,9 +17,9 @@ userRouter.post("/login", async (req, res, next) => {
 			email: fields.email,
 		});
 		if (user) {
-			if (fields.password === user.password.at(-1)) {
+			if (user.verifyPassword(fields.password)) {
 				const token = jwt.sign(
-					JSON.stringify(user),
+					JSON.stringify(user.toJSON()),
 					process.env.JWT_SECRET
 				);
 				res.cookie("jid", token, { httpOnly: true });
@@ -60,7 +60,7 @@ userRouter.post("/signup", (req, res, next) => {
 			};
 			const user = await User.create(fields);
 			const token = jwt.sign(
-				JSON.stringify(user),
+				JSON.stringify(user.toJSON()),
 				process.env.JWT_SECRET
 			);
 			res.cookie("jid", token, { httpOnly: true });
