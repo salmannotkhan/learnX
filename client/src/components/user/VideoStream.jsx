@@ -12,22 +12,26 @@ export default function VideoStream() {
 		controls: true,
 		responsive: true,
 		fluid: true,
+		preload: "auto",
 		sources: [
-			{
-				src: video ? video.videoUrl : "",
-				type: "video/mp4",
-			},
+			video
+				? {
+						src: video.videoUrl,
+						type: video.isLive
+							? "application/x-mpegURL"
+							: "video/mp4",
+				  }
+				: null,
 		],
+		handleManifestRedirects: true,
 	};
 
-	const interect = async (type, body) => {
-		console.log("here");
-		const response = await axios.post("/video/interaction", {
+	const interect = (type, body) => {
+		axios.post("/video/interaction", {
 			videoId,
 			type,
 			body,
 		});
-		console.log(response.data);
 	};
 	useEffect(() => {
 		axios.get(`/video/${videoId}`).then((resp) => setVideo(resp.data));
@@ -60,22 +64,22 @@ export default function VideoStream() {
 							</p>
 						</div>
 						<div className="row m-4">
-							<button
-								className="button p-5 is-ghost is-primary"
-								onClick={() => interect("like")}>
-								{video.likes.length} <br />
-								Like
-							</button>
-							<button
-								className="button p-5 is-ghost is-primary"
-								onClick={() => interect("dislike")}>
-								{video.dislikes.length} <br />
-								Dislike
-							</button>
+							<div className="field has-addons">
+								<button
+									className="button p-5 is-outlined is-inverted is-primary"
+									onClick={() => interect("like")}>
+									{video.likes.length} Like
+								</button>
+								<button
+									className="button p-5 is-outlined is-inverted is-primary"
+									onClick={() => interect("dislike")}>
+									{video.dislikes.length} Dislike
+								</button>
+							</div>
 						</div>
 					</div>
 				) : (
-					<div>Video not found </div>
+					<div>{video.error}</div>
 				)
 			) : null}
 			<div className="column"></div>

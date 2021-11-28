@@ -90,19 +90,29 @@ videoRouter.post("/", isAuthenticated, async (req, res, next) => {
 			next(err);
 			return;
 		}
-		const fileStream = fs.createReadStream(files.video.path);
-		const uploadParams = {
-			Bucket: process.env.AWS_BUCKET,
-			Key: files.video.name,
-			Body: fileStream,
-			ACL: "public-read",
-		};
-		const data = await s3Client.send(new PutObjectCommand(uploadParams));
-		const url = `https://${process.env.AWS_BUCKET}.s3.amazonaws.com/${files.video.name}`;
+		var url = "";
+		if (fields.videoType === "Upload") {
+			const fileStream = fs.createReadStream(files.video.path);
+			const uploadParams = {
+				Bucket: process.env.AWS_BUCKET,
+				Key: files.video.name,
+				Body: fileStream,
+				ACL: "public-read",
+			};
+			const data = await s3Client.send(
+				new PutObjectCommand(uploadParams)
+			);
+			url = `https://${process.env.AWS_BUCKET}.s3.amazonaws.com/${files.video.name}`;
+		} else {
+			url =
+				"https://d12w646u22p46b.cloudfront.net/out/v1/296370c01e4c4861b07f3c021e15753b/index.m3u8";
+		}
 		const video = await Video.create({
 			title: fields.title,
 			category: fields.category,
 			tags: fields.tags.split(" "),
+			isLive: fields.videoType === "Live",
+			isPremium: fields.premium === "on",
 			videoUrl: url,
 			audioLanguage: fields.audioLanguage,
 			uploadedBy: req.user._id,
