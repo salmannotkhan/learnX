@@ -1,8 +1,22 @@
 import axios from "axios";
-import React from "react";
+import React, { useCallback, useEffect } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
-function Header() {
+function AdminLayout() {
 	const navigate = useNavigate();
+	const getUser = useCallback(async () => {
+		axios
+			.get("/user/current")
+			.then((response) => {
+				console.log(response.data);
+				if (response.data.role !== "Admin") navigate("/user/course");
+			})
+			.catch((e) => {
+				if (e.response.status === 401) navigate("/login");
+			});
+	}, [navigate]);
+	useEffect(() => {
+		getUser();
+	}, [getUser]);
 	const handleLogout = async () => {
 		const response = await axios.get("/user/logout");
 		navigate("/login");
@@ -66,4 +80,4 @@ function Header() {
 	);
 }
 
-export default Header;
+export default AdminLayout;

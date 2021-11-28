@@ -5,17 +5,17 @@ import Home from "./Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AdminPanel from "./admin/AdminPanel";
 import Trainers from "./admin/Trainers";
-import Header from "./admin/Header";
-import Footer from "./admin/Footer";
+import AdminLayout from "./admin/AdminLayout";
 import Trainees from "./admin/Trainees";
 import Videos from "./admin/Videos";
 import Subscriptions from "./admin/Subscriptions";
-import UserHeader from "./user/UserHeader";
+import UserLayout from "./user/UserLayout";
 import CoursePage from "./user/CoursePage";
 import UserProfile from "./user/UserProfile";
 import Plan from "./user/Plan";
 import UploadVideo from "./user/UploadVideo";
 import VideoStream from "./user/VideoStream";
+import LiveInstructions from "./user/LiveInstructions";
 
 const App = () => {
 	return (
@@ -28,7 +28,7 @@ const App = () => {
 
 						<Route path="login" element={<Login />} />
 
-						<Route path="admin" element={<Header />}>
+						<Route path="admin" element={<AdminLayout />}>
 							<Route index element={<AdminPanel />} />
 							<Route path="trainers" element={<Trainers />} />
 							<Route path="trainees" element={<Trainees />} />
@@ -39,7 +39,7 @@ const App = () => {
 							/>
 						</Route>
 
-						<Route path="user" element={<UserHeader />}>
+						<Route path="user" element={<UserLayout />}>
 							<Route path="course" element={<CoursePage />} />
 							<Route
 								path="course/:videoId"
@@ -48,12 +48,15 @@ const App = () => {
 							<Route path="profile" element={<UserProfile />} />
 							<Route path="plan" element={<Plan />} />
 							<Route path="video" element={<UploadVideo />} />
+							<Route
+								path="instructions"
+								element={<LiveInstructions />}
+							/>
 						</Route>
 						<Route path="*" element={<div>Not found</div>} />
 					</Route>
 				</Routes>
 			</BrowserRouter>
-			<Footer />
 		</section>
 	);
 };

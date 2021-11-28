@@ -23,7 +23,15 @@ userRouter.post("/login", async (req, res, next) => {
 					process.env.JWT_SECRET
 				);
 				res.cookie("jid", token, { httpOnly: true });
-				return res.json({ success: true, error: null });
+				const resJson = { success: true, error: null };
+				switch (user.role) {
+					case "Admin":
+						resJson["next"] = "/admin";
+						break;
+					default:
+						resJson["next"] = "/user/course";
+				}
+				return res.json(resJson);
 			}
 			return res.json({
 				success: false,
@@ -66,6 +74,10 @@ userRouter.post("/signup", (req, res, next) => {
 userRouter.get("/logout", async (_req, res) => {
 	res.clearCookie("jid");
 	return res.json({ success: true, error: null });
+});
+
+userRouter.get("/current", isAuthenticated, (req, res) => {
+	return res.json(req.user);
 });
 
 userRouter.get("/:userId", isAuthenticated, async (req, res) => {

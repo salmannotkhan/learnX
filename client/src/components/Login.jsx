@@ -30,7 +30,7 @@ function Login() {
 				default:
 			}
 		} else {
-			navigate("/admin/panel");
+			navigate(response.data.next);
 		}
 		setLoading(false);
 		console.log(response);
@@ -80,7 +80,7 @@ function Login() {
 										<div className="column">
 											<div className="columns is-vcentered">
 												<div className="column">
-													<h4 class="title is-4 has-text-dark has-text-centered">
+													<h4 className="title is-4 has-text-dark has-text-centered">
 														Signin
 													</h4>
 
