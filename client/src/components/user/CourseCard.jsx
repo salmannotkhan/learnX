@@ -15,6 +15,17 @@ function Courses({ video }) {
 							&#x2605; Pro
 						</span>
 					) : null}
+					{video.isLive ? (
+						<span
+							style={{
+								position: "absolute",
+								zIndex: 1,
+								right: 0,
+							}}
+							className="tag is-danger">
+							&#9679; Live
+						</span>
+					) : null}
 					<figure className="image is-2by1">
 						<img src={video.thumbnailUrl} alt={video.title} />
 					</figure>

@@ -142,15 +142,20 @@ videoRouter.delete("/:videoId", async (req, res) => {
 	res.send("Vidoe delete route " + req.params.videoId);
 });
 
-videoRouter.post("/explore", isAuthenticated, async (req, res) => {
-	if (req.user.subscription) {
-		const videos = await Video.find().populate({
-			path: "uploadedBy",
-			select: "name",
-		});
-		return res.send(videos);
+videoRouter.post("/explore", jsonParser, isAuthenticated, async (req, res) => {
+	const filters = {};
+
+	Object.entries(req.body).forEach(([key, value]) => {
+		if (key !== "uploadedBy") {
+			if (value !== "") {
+				filters[key] = { $regex: value, $options: "i" };
+			}
+		}
+	});
+	if (!req.user.subscription) {
+		filters["isPremium"] = false;
 	}
-	const videos = await Video.find({ isPremium: false }).populate({
+	const videos = await Video.find(filters).populate({
 		path: "uploadedBy",
 		select: "name",
 	});
