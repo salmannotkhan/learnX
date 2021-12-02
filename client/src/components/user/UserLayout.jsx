@@ -1,14 +1,18 @@
 import axios from "axios";
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 function UserLayout() {
 	const navigate = useNavigate();
+	const [user, setUser] = useState();
 	const getUser = useCallback(async () => {
-		axios.get("/user/current").catch((e) => {
-			if (e.response.status === 401) {
-				navigate("/login");
-			}
-		});
+		axios
+			.get("/user/current")
+			.then((response) => setUser(response.data))
+			.catch((e) => {
+				if (e.response.status === 401) {
+					navigate("/login");
+				}
+			});
 	}, [navigate]);
 	useEffect(() => {
 		getUser();
@@ -31,7 +35,9 @@ function UserLayout() {
 
 						<div id="navbarMenuHeroC" className="navbar-menu">
 							<div className="navbar-end">
-								<Link className="navbar-item" to="profile">
+								<Link
+									className="navbar-item"
+									to={user ? user._id : ""}>
 									My Profile
 								</Link>
 								<div className="navbar-item">

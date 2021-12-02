@@ -3,13 +3,13 @@ import UserProfile from "images/userprofile.png";
 import { Link } from "react-router-dom";
 function TrainerCard(props) {
 	return (
-		<Link to="panel" className="column is-one-third">
+		<Link to={`/user/${props.id}`} className="column is-one-third">
 			<div className="card">
 				<div className="card-content">
 					<div className="media">
 						<div className="media-left">
 							<figure className="image is-96x96">
-								<img src={UserProfile} alt="User Profile"></img>
+								<img src={UserProfile} alt="User Profile" />
 							</figure>
 						</div>
 						<div className="media-content has-text-dark">

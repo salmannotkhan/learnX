@@ -1,6 +1,6 @@
 import React from "react";
 import Monthly from "../../images/Monthly.png";
-import Quaterly from "../../images/Quaterly.png";
+import Quarterly from "../../images/Quaterly.png";
 import Yearly from "../../images/Yearly.png";
 
 export default function Plan() {
@@ -12,9 +12,7 @@ export default function Plan() {
 						<div className="card" style={{ marginTop: 70 }}>
 							<div className="card-image">
 								<figure className="image is-2by1">
-									<img
-										src={Monthly}
-										alt="Monthly Banner"></img>
+									<img src={Monthly} alt="Monthly Banner" />
 								</figure>
 							</div>
 							<div className="card-content">
@@ -58,9 +56,7 @@ export default function Plan() {
 						<div className="card" style={{ marginTop: -30 }}>
 							<div className="card-image">
 								<figure className="image is-2by1">
-									<img
-										src={Quaterly}
-										alt="Monthly Banner"></img>
+									<img src={Quarterly} alt="Monthly Banner" />
 								</figure>
 							</div>
 							<div className="card-content">
@@ -104,9 +100,7 @@ export default function Plan() {
 						<div className="card" style={{ marginTop: 70 }}>
 							<div className="card-image">
 								<figure className="image is-2by1">
-									<img
-										src={Yearly}
-										alt="Monthly Banner"></img>
+									<img src={Yearly} alt="Monthly Banner" />
 								</figure>
 							</div>
 							<div className="card-content">

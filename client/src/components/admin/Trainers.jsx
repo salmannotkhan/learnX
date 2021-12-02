@@ -37,6 +37,7 @@ function Trainers() {
 						filtered.map((trainer) => (
 							<TrainerCard
 								key={trainer._id}
+								id={trainer._id}
 								name={
 									trainer.name.firstName +
 									" " +

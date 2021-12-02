@@ -81,11 +81,13 @@ userRouter.get("/current", isAuthenticated, (req, res) => {
 });
 
 userRouter.get("/:userId", isAuthenticated, async (req, res) => {
-	console.log(req.user);
 	try {
 		const user = await User.findById(req.params.userId);
 		if (user) {
-			return res.json(user);
+			return res.json({
+				...user.toJSON(),
+				self: req.params.userId === req.user._id,
+			});
 		}
 		res.status(404).send({ error: "User not found :/" });
 	} catch {

@@ -11,7 +11,7 @@ export default function LiveInstructions() {
 					1. Download & Install OBS Studio from{" "}
 					<a
 						className="has-text-info"
-						href="http://obsproject.com/download">
+						href="https://obsproject.com/download">
 						here
 					</a>
 					<br />
@@ -31,8 +31,8 @@ export default function LiveInstructions() {
 					automatically calibrate video quality for streaming. Once
 					finished, hit Apply Settings. <br />
 					7. Add input sources whichever you want to share using plus
-					sign under input souces tab. <br /> 8. Hit "Start Streaming"
-					to Go Live!
+					sign under input sources tab. <br /> 8. Hit "Start
+					Streaming" to Go Live!
 				</div>
 			</div>
 		</div>

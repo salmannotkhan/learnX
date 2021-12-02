@@ -45,7 +45,7 @@ const App = () => {
 								path="course/:videoId"
 								element={<VideoStream />}
 							/>
-							<Route path="profile" element={<UserProfile />} />
+							<Route path=":userId" element={<UserProfile />} />
 							<Route path="plan" element={<Plan />} />
 							<Route path="video" element={<UploadVideo />} />
 							<Route
